@@ -1,0 +1,8 @@
+You've arrived at your Prison Cell! It is dimly lit with thick brick walls and you can't help but notice a foul-smelling odor. Distinct features of this room include a bed, poster, toilet, sink, Bible, and air vent.
+You're back at the Prison Cell. Features: Bed, poster, toilet, sink, Bible, air vent.
+Bed
+Poster
+Toilet
+Sink
+Air Vent
+Bible
