@@ -10,12 +10,14 @@ def display():
     #Sets the console window size
     os.system("mode con cols=170 lines=50")
     
+    system('clear')
+
     line1 = "After escaping from two previous prison, you are now being transported to Alcatraz Federal Penitentiary.\n"
     line2 = "No one in history has every excaped from Alcatraz island. Unless you can figure out how to the first, then\n"
     line3 = "this will be last place you ever see."
 
     #For statement create the typing effect for the game intro
-    """for x in line1:
+    for x in line1:
         print(x, end='')
         sys.stdout.flush()
         sleep(0.1)
@@ -28,11 +30,11 @@ def display():
     for x in line3:
         print(x, end='')
         sys.stdout.flush()
-        sleep(0.1)"""
+        sleep(0.1)
 
     sleep(2)
-    system('cls') #for windows
-    #system('clear') #for linux
+    #system('cls') #for windows
+    system('clear') #for linux
 
 
 
