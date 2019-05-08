@@ -5,7 +5,7 @@ import sys
 #returns the alias for the verb entered by the player
 def findAlias(x):
     actionsGrid = [['hit', 'punch', 'swing', 'collide', 'bat', 'strike', 'bump', 'slap', 'smack', 'knock'], ['pull', 'drag', 'haul', 'yank'], ['eat', 'consume', 'swallow', 'chew', 'devour', 'feed', 'ingest', 'nibble'],
-    ['sratch', 'claw', 'cut', 'scrape'], ['drop', 'dump', 'lower', 'release'], ['break', 'destroy', 'shatter', 'smash', 'crush', 'split', 'tear'], ['throw', 'fling', 'heave', 'hurl', 'pitch', 'thrust', 'propel'],
+    ['scratch', 'claw', 'cut', 'scrape'], ['drop', 'dump', 'lower', 'release'], ['break', 'destroy', 'shatter', 'smash', 'crush', 'split', 'tear'], ['throw', 'fling', 'heave', 'hurl', 'pitch', 'thrust', 'propel'],
     ['push', 'press', 'shove'], ['drink', 'sip', 'gulp', 'slurp', 'suck'], ['open', 'expand', 'free'], ['take', 'grab']]
 
     for idx, row in enumerate(actionsGrid):
@@ -64,18 +64,18 @@ def userInput():
                 del words[i]
     #analyze each word
         specVerb = helpVerbs(words)
-        if specVerb != 0: 
+        if specVerb != 0 and specVerb != 1: 
             if specVerb == "look":
                 specialNoun = "N/A"
                 return specVerb, specialNoun
             if specVerb[0] == "lookat":
                 return specVerb[0], specVerb[1]   
 
-
+        if specVerb != 0:
             for idx, x in enumerate(words):
                 #look for key words
                     keywords = ['hit', 'punch', 'swing', 'collide', 'bat', 'strike', 'bump', 'slap', 'smack', 'knock', 'pull', 'drag', 'haul', 'yank', 'eat', 'consume', 'swallow', 'chew', 'devour', 'feed', 'ingest', 'nibble', 
-                    'sratch', 'claw', 'cut', 'scrape', 'drop', 'dump', 'lower', 'release', 'break', 'destroy', 'shatter', 'smash', 'crush', 'split', 'tear', 'throw', 'fling', 'heave', 'hurl', 'pitch', 'thrust', 'propel',
+                    'scratch', 'claw', 'cut', 'scrape', 'drop', 'dump', 'lower', 'release', 'break', 'destroy', 'shatter', 'smash', 'crush', 'split', 'tear', 'throw', 'fling', 'heave', 'hurl', 'pitch', 'thrust', 'propel',
                     'push', 'press', 'shove', 'drink', 'sip', 'gulp', 'slurp', 'suck', 'open', 'expand', 'free', 'take', 'grab']
                     for y in keywords:
                         if x == y:
@@ -126,4 +126,22 @@ if __name__ == '__main__':
 #need to wait for those to be created, can do a practice one
 #how are we pulling this together? If I have this program, will the other programs call it or are we putting it all in one program?
     #put it all in one main and each program is a "function" that we call when needed?
+#mid point check-in
+#update on the features we want to use? How do we want to use them?
 
+#create a create verb or build verb - if they don't have all the required items then throw a "You don't have all the items you need to build"
+#how to read in all the items in the room from the txt files
+
+
+def printRoomDescription(self):
+    for item in self.roomList:
+        rmName = str(item['Name'])
+        if (item['Name'] == self.currentRoom):
+            if (item['Status'] == 'visited'):
+                print ("Location: ", item['Name'])
+                print (item['ShortDesc'])
+            else:
+                print ("Location: ", item['Name'])
+                print (item['LongDesc'])
+                self.setRoomStatus(self.currentRoom)
+        break
