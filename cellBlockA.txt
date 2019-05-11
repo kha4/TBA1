@@ -1,0 +1,4 @@
+Cell Block A
+You've arrived at Cell Block A! There's not much to see here, only a deactivated locking mechanism. Seems like someone left the doors open to the Library and the Visitation Room.
+You're back at Cell Block A. Features: Locking mechanism.
+not visited

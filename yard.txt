@@ -1,0 +1,5 @@
+Yard
+You've arrived at the Yard! The weather outside is cold and gloomy. There is a fence surrounding the yard with a guard tower stationed nearby. The only way out is back to the Visiting Room.
+You're back at the Yard. Features: Fence, Guard tower.
+not visited
+
