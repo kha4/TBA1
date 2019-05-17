@@ -23,7 +23,7 @@ def helpVerbs(words):
     adjRooms = ['cella', 'cellb']
     for idx, x in enumerate(words):
         #looking for a spcial verb
-        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east']
+        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame']
         for y in specialVerbs:
             if x == y:
                 print "FOUND SPECIAL VERB:", y
@@ -75,6 +75,8 @@ def helpVerbs(words):
                         return 0
                     except:
                         return x
+                if x == "savegame" or "loadgame":
+                    return x
         for i in adjRooms:
             if x == i:
                 print "FOUND DIRECTION:", i
@@ -148,20 +150,16 @@ def userInput():
 if __name__ == '__main__':
     SV = "startingValue"
     actionNoun = userInput()
-    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west']
+    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame']
     finalRooms = ['cella', 'cellb']
     for idx, x in enumerate(finalActions):
         if actionNoun[0] == x:
-            #set flag
-            flag = idx 
-            print "\nFlag:", flag
+            print "\nVerb:", actionNoun[0]
             print "User Noun:", actionNoun[1]
     counter = 20
     for idx, x in enumerate(finalRooms):
         if actionNoun[0] == x:
-            #set flag
-            flag = counter 
-            print "\nFlag:", flag
+            print "\nVerb:", actionNoun[0]
             print "User Noun:", actionNoun[1]
         counter = counter + 1
             
@@ -183,15 +181,15 @@ if __name__ == '__main__':
 #ADD TOLOWER FUNCTION
 
 
-def printRoomDescription(self):
-    for item in self.roomList:
-        rmName = str(item['Name'])
-        if (item['Name'] == self.currentRoom):
-            if (item['Status'] == 'visited'):
-                print ("Location: ", item['Name'])
-                print (item['ShortDesc'])
-            else:
-                print ("Location: ", item['Name'])
-                print (item['LongDesc'])
-                self.setRoomStatus(self.currentRoom)
-        break
+# def printRoomDescription(self):
+#     for item in self.roomList:
+#         rmName = str(item['Name'])
+#         if (item['Name'] == self.currentRoom):
+#             if (item['Status'] == 'visited'):
+#                 print ("Location: ", item['Name'])
+#                 print (item['ShortDesc'])
+#             else:
+#                 print ("Location: ", item['Name'])
+#                 print (item['LongDesc'])
+#                 self.setRoomStatus(self.currentRoom)
+#         break
