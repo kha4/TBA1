@@ -20,13 +20,13 @@ def helpVerbs(words):
     #pull in the valid room exits
     roomExits = ['north', 'south', 'west', 'east']
     #pull in the valid ones, hard coded for now
-    adjRooms = ['cella', 'cellb']
+    adjRooms = ['cella', 'cellb', 'Door1', 'Door2']
     for idx, x in enumerate(words):
         #looking for a spcial verb
         specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame']
         for y in specialVerbs:
             if x == y:
-                print "FOUND SPECIAL VERB:", y
+                print ("FOUND SPECIAL VERB:", y)
                 #checking if there is a valid noun to look at or just using look
                 if x == "look":
                     try:
@@ -39,16 +39,16 @@ def helpVerbs(words):
                                     if words[idx+2] == i:
                                         #we understand what the player wants to look at, and is a valid item
                                         specialFlag = 1
-                                        print "look at noun:", i
+                                        print ("look at noun:", i)
                                         return "lookat", i
                                 except:
-                                    print "You need to include an item to look at.\n"
+                                    print ("You need to include an item to look at.\n")
                                     return 0
                             if specialFlag == 0:
-                                print "That is not a valid item to look at. You can look at items in the current room or in your inventory. Type \"inventory\" to view your inventory.\n"
+                                print ("That is not a valid item to look at. You can look at items in the current room or in your inventory. Type \"inventory\" to view your inventory.\n")
                                 return 0
                         else:
-                            print "To get the explanation of a room, only type \'look\'.\nIf you want to look AT something, type \'look at\' followed by an item."
+                            print ("To get the explanation of a room, only type \'look\'.\nIf you want to look AT something, type \'look at\' followed by an item.")
                             return 0
                             #put here stuff for "look under the bed" maybe?
                     except:
@@ -63,15 +63,15 @@ def helpVerbs(words):
                         for i in adjRooms:
                             if words[idx+1] == i:
                                 return i
-                        print "That is not a valid direction you can go in.\n"
+                        print ("That is not a valid direction you can go in.\n")
                         return 0
                     except:
-                        print "Which way would you like to go? Refer to the room description to find the exits.\n"
+                        print ("Which way would you like to go? Refer to the room description to find the exits.\n")
                         return 0
                 if x == "north" or "south" or "east" or "west":
                     try:
                         words[idx+1]
-                        print "To go a direction try: \"go north\" or just \"north\"."
+                        print ("To go a direction try: \"go north\" or just \"north\".")
                         return 0
                     except:
                         return x
@@ -79,7 +79,7 @@ def helpVerbs(words):
                     return x
         for i in adjRooms:
             if x == i:
-                print "FOUND DIRECTION:", i
+                print ("FOUND DIRECTION:", i)
                 return i
 
     return 1
@@ -90,7 +90,7 @@ def userInput():
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
-        userInput = raw_input("What would you like to do next?\n")
+        userInput = input("What would you like to do next?\n")
         sys.stdout.flush()
     #split text by " "(space)
         lowerInput = userInput.lower()
@@ -120,29 +120,29 @@ def userInput():
                     'push', 'press', 'shove', 'drink', 'sip', 'gulp', 'slurp', 'suck', 'open', 'expand', 'free', 'take', 'grab']
                     for y in keywords:
                         if x == y:
-                            print "FOUND VERB:", x
+                            print ("FOUND VERB:", x)
                             alias = findAlias(x)
-                            print "FOUND ALIAS:", alias
+                            print ("FOUND ALIAS:", alias)
                             #look for nouns following key words
-                            nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect']
+                            nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect', 'key', 'Door1', 'Door2']
                             understandFlag = 2 
                             for i in nouns:
                                 try:
                                     if words[idx+1] == i:
-                                        print "FOUND NOUN:", i
+                                        print ("FOUND NOUN:", i)
                                         userNoun = i
                                         #confirm understand, we have action and noun that we know so we can exit
                                         understandFlag = 1
                                 except:
-                                    print "You did not provide an item that is available for your action. Please enter the phrase again with an item.\n"
+                                    print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
                                     understandFlag = 3
                                     break
                             #if we understand the verb but not the noun
                             if understandFlag == 2:
-                                print "1You did not provide an item that is available for your action. Please enter the phrase again with an item.\n"
+                                print ("1You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
             #if we don't understand the verb
             if understandFlag == 0:
-                print "I'm sorry, I don't understand. Please enter a different phrase.\n"
+                print ("I'm sorry, I don't understand. Please enter a different phrase.\n")
 
     return alias, userNoun
 
@@ -151,16 +151,16 @@ if __name__ == '__main__':
     SV = "startingValue"
     actionNoun = userInput()
     finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame']
-    finalRooms = ['cella', 'cellb']
+    finalRooms = ['cella', 'cellb', ]
     for idx, x in enumerate(finalActions):
         if actionNoun[0] == x:
-            print "\nVerb:", actionNoun[0]
-            print "User Noun:", actionNoun[1]
+            print ("\nVerb:", actionNoun[0])
+            print ("User Noun:", actionNoun[1])
     counter = 20
     for idx, x in enumerate(finalRooms):
         if actionNoun[0] == x:
-            print "\nVerb:", actionNoun[0]
-            print "User Noun:", actionNoun[1]
+            print ("\nVerb:", actionNoun[0])
+            print ("User Noun:", actionNoun[1])
         counter = counter + 1
             
             #this is how it would go back to the main program, with the correct flag and item
