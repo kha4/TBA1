@@ -1,4 +1,4 @@
 Visiting Room
-You've arrived at the Visiting Room! It looks very dreary and sad. Not a great place to spend time with family. Theonly things you see here is the visitation phone, raincoats, and two passageways in and out. One is back to Cell Block A and the other is to the Yard.
-You're back at the Visiting Room. Features: Visitation Phone
+You've arrived at the Visiting Room! It looks very dreary and sad. Not a great place to spend time with family. The Sally Port is to the north and the Yard is to the south. The only things you see here are the visitation phone and a guard.
+You're back at the Visiting Room. Passageways: North - Sally Port, South - Yard. Features: Visitation Phone, Guard.
 not visited

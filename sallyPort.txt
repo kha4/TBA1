@@ -1,0 +1,4 @@
+Sally Port
+You've arrived at the Sally Port! You hear the waves crashing against the port and the overwhelming aroma of the sea thickened in the air. The Armory is to the north, the Visiting Room is to the south, and Cell Block A is to the west. You quickly notice a door lock control panel, a metal detector, and a guard in the area.
+You're back at the Sally Port. Passageways: North - Armory, South - Visiting Room, West - Cell Block A. Features: Door Lock Control Panel, Metal Detector, Guard.
+not visited

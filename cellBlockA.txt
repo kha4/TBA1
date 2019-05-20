@@ -1,4 +1,4 @@
 Cell Block A
-You've arrived at Cell Block A! There's not much to see here, only a deactivated locking mechanism. Seems like someone left the doors open to the Library and the Visitation Room.
-You're back at Cell Block A. Features: Locking mechanism.
+You've arrived at Cell Block A! There are a lot of other prison cells around, but, strangely, only your cell is open. Your Prison Cell is to the north, the Sally Port is to the east, the Library is to the South, and the Mess Hall is to the west. There also seems to be some sort of locking mechanism in the room along with a guard in the distance.
+You're back at Cell Block A. Passages: North - Prison Cell, East - Sally Port, South - Library, West - Mess Hall. Features: Locking Mechanism, Guard.
 not visited

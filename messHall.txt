@@ -1,0 +1,4 @@
+Mess Hall
+You've arrived at the Mess Hall! It looks like no one is eating here at the moment. What a dreary place. Bits of food and small scraps are everywhere. To the east is Cell Block A and the Kitchen is to the west. The features of this room include tables and guards.
+You're back at the Mess Hall. Passageways: East - Cell Block A, West - Kitchen. Features: Tables, Guards.
+not visited

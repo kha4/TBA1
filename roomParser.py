@@ -111,22 +111,22 @@ def parseNewRoomData(newGame):
         newGame.createRoom(cellBlockA)
 
 
-	crawlSpace = {}
-	with open ('crawlSpace.txt', 'rt') as csFile:
-		line = csFile.readline()
-                cnt = 1
-                while line:
-                        if cnt == 1:
-                                crawlSpace['Name'] = line
-                        elif cnt == 2:
-                                crawlSpace['LongDesc'] = line
-                        elif cnt == 3:
-                                crawlSpace['ShortDesc'] = line
-                        else:
-                                crawlSpace['Status'] = line
-                        cnt += 1
-                        line = csFile.readline()
-        newGame.createRoom(crawlSpace)
+#	crawlSpace = {}
+#	with open ('crawlSpace.txt', 'rt') as csFile:
+#		line = csFile.readline()
+#                cnt = 1
+#                while line:
+#                        if cnt == 1:
+#                                crawlSpace['Name'] = line
+#                        elif cnt == 2:
+#                                crawlSpace['LongDesc'] = line
+#                        elif cnt == 3:
+#                                crawlSpace['ShortDesc'] = line
+#                        else:
+#                                crawlSpace['Status'] = line
+#                        cnt += 1
+#                        line = csFile.readline()
+#        newGame.createRoom(crawlSpace)
 
 
 	messHall = {}
@@ -183,40 +183,40 @@ def parseNewRoomData(newGame):
         newGame.createRoom(guardHouse)
 
 
-	powerPlant = {}
-	with open ('powerPlant.txt', 'rt') as ppFile:
-		line = ppFile.readline()
-                cnt = 1
-                while line:
-                        if cnt == 1:
-                                powerPlant['Name'] = line
-                        elif cnt == 2:
-                                powerPlant['LongDesc'] = line
-                        elif cnt == 3:
-                                powerPlant['ShortDesc'] = line
-                        else:
-                                powerPlant['Status'] = line
-                        cnt += 1
-                        line = ppFile.readline()
-        newGame.createRoom(powerPlant)
+#	powerPlant = {}
+#	with open ('powerPlant.txt', 'rt') as ppFile:
+#		line = ppFile.readline()
+#                cnt = 1
+#                while line:
+#                        if cnt == 1:
+#                                powerPlant['Name'] = line
+#                        elif cnt == 2:
+#                                powerPlant['LongDesc'] = line
+#                        elif cnt == 3:
+#                                powerPlant['ShortDesc'] = line
+#                        else:
+#                                powerPlant['Status'] = line
+#                        cnt += 1
+#                        line = ppFile.readline()
+#        newGame.createRoom(powerPlant)
 
 
-	lightHouse = {}
-	with open ('lightHouse.txt', 'rt') as lhFile:
-		line = lhFile.readline()
-                cnt = 1
-                while line:
-                        if cnt == 1:
-                                lightHouse['Name'] = line
-                        elif cnt == 2:
-                                lightHouse['LongDesc'] = line
-                        elif cnt == 3:
-                                lightHouse['ShortDesc'] = line
-                        else:
-                                lightHouse['Status'] = line
-                        cnt += 1
-                        line = lhFile.readline()
-        newGame.createRoom(lightHouse)
+#	lightHouse = {}
+#	with open ('lightHouse.txt', 'rt') as lhFile:
+#		line = lhFile.readline()
+#                cnt = 1
+#                while line:
+#                        if cnt == 1:
+#                                lightHouse['Name'] = line
+#                        elif cnt == 2:
+#                                lightHouse['LongDesc'] = line
+#                        elif cnt == 3:
+#                                lightHouse['ShortDesc'] = line
+#                        else:
+#                                lightHouse['Status'] = line
+#                        cnt += 1
+#                        line = lhFile.readline()
+#        newGame.createRoom(lightHouse)
 
 
 	dock = {}
@@ -237,22 +237,22 @@ def parseNewRoomData(newGame):
         newGame.createRoom(dock)
 
 
-	electricShop = {}
-	with open ('electricShop.txt', 'rt') as esFile:
-		line = esFile.readline()
-                cnt = 1
-                while line:
-                        if cnt == 1:
-                                electricShop['Name'] = line
-                        elif cnt == 2:
-                                electricShop['LongDesc'] = line
-                        elif cnt == 3:
-                                electricShop['ShortDesc'] = line
-                        else:
-                                electricShop['Status'] = line
-                        cnt += 1
-                        line = esFile.readline()
-        newGame.createRoom(electricShop)
+#	electricShop = {}
+#	with open ('electricShop.txt', 'rt') as esFile:
+#		line = esFile.readline()
+#                cnt = 1
+#                while line:
+#                        if cnt == 1:
+#                                electricShop['Name'] = line
+#                        elif cnt == 2:
+#                                electricShop['LongDesc'] = line
+#                        elif cnt == 3:
+#                                electricShop['ShortDesc'] = line
+#                        else:
+#                                electricShop['Status'] = line
+#                        cnt += 1
+#                        line = esFile.readline()
+#        newGame.createRoom(electricShop)
 
 
 	recreationYard = {}
@@ -309,22 +309,22 @@ def parseNewRoomData(newGame):
         newGame.createRoom(boat)
 
 
-	carpentryShop = {}
-	with open ('carpentryShop.txt', 'rt') as carpFile:
-		line = carpFile.readline()
-                cnt = 1
-                while line:
-                        if cnt == 1:
-                                carpentryShop['Name'] = line
-                        elif cnt == 2:
-                                carpentryShop['LongDesc'] = line
-                        elif cnt == 3:
-                                carpentryShop['ShortDesc'] = line
-                        else:
-                                carpentryShop['Status'] = line
-                        cnt += 1
-                        line = carpFile.readline()
-        newGame.createRoom(carpentryShop)
+#	carpentryShop = {}
+#	with open ('carpentryShop.txt', 'rt') as carpFile:
+#		line = carpFile.readline()
+#                cnt = 1
+#                while line:
+#                        if cnt == 1:
+#                                carpentryShop['Name'] = line
+#                        elif cnt == 2:
+#                                carpentryShop['LongDesc'] = line
+#                        elif cnt == 3:
+#                                carpentryShop['ShortDesc'] = line
+#                        else:
+#                                carpentryShop['Status'] = line
+#                        cnt += 1
+#                        line = carpFile.readline()
+#        newGame.createRoom(carpentryShop)
 
 
 	wardenOffice = {}
