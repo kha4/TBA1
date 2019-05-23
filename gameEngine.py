@@ -10,8 +10,6 @@ def main():
 
     menuSelection = mainMenu.display()
 
-    #print(menuSelection) #for testing
-
     if (menuSelection == "1"):
         newGame = gameState.gameState()
         roomParser.parseNewRoomData(newGame)
@@ -25,17 +23,12 @@ def main():
     #gameplay loop would start here
     newGame.printRoomDescription()
 
-    #print (newGame.objectList)
-    #print (newGame.passageList)
+    #Call for testing
+    newGame.testSuite()
 
     while (newGame.gameOver() == 0):
         verb, noun = textParser.userInput()
         newGame.modifyState(verb, noun)
-        #newGame.displayInventory() #for testing
-
-
-
-
 
 
 if __name__ == "__main__":

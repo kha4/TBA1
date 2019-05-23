@@ -174,7 +174,20 @@ class gameState:
                     print ("Room status changed to", item['Status'])#for testing
 
     def displayInventory(self):
-        print (self.playerInventory)
+        print (self.playerInventory, '\n')
+
+    def testSuite(self):
+        print ("**********This is a testing function that was called**********")
+        print ("List of all rooms loaded: \n")
+        print (self.roomList)
+        print ("List of all passages loaded: \n")
+        print (self.passageList)
+        print ("List of all objects loaded: \n")
+        print (self.objectList)
+        print ("Current room: \n")
+        print (self.currentRoom)
+        print ("********************End of Test Function***********************")
+
 
     def gameOver(self):
         for item in self.objectList:
