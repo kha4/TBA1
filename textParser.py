@@ -1,6 +1,8 @@
 #include statements
 import sys
-
+#import game engine?
+#should be able to directly access all the variables in the newgame instance so if you needed to access the current room you would do newgame.gamestate.currentroom
+#if works then can also reference roomlist, objectlist, passageList, etc
 
 #returns the alias for the verb entered by the player
 def findAlias(x):
@@ -50,7 +52,6 @@ def helpVerbs(words):
                         else:
                             print ("To get the explanation of a room, only type \'look\'.\nIf you want to look AT something, type \'look at\' followed by an item.")
                             return 0
-                            #put here stuff for "look under the bed" maybe?
                     except:
                         #good, we understand, they want to use "look"
                         return x
@@ -68,15 +69,27 @@ def helpVerbs(words):
                     except:
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
                         return 0
-                if x == "north" or "south" or "east" or "west":
+                if x == "north" or x == "south" or x == "east" or x == "west":
                     try:
                         words[idx+1]
                         print ("To go a direction try: \"go north\" or just \"north\".")
                         return 0
                     except:
                         return x
-                if x == "savegame" or "loadgame":
-                    return x
+                if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame":
+                    try:
+                        words[idx+1]
+                        print "To use the command", x, "just type:", x, "\n"
+                        return 0
+                    except:
+                        pass
+                    try:
+                        words[idx-2]
+                        print "To use the command", x, "just type:", x, "\n"
+                        return 0
+                    except:
+                        return x
+
         for i in adjRooms:
             if x == i:
                 print ("FOUND DIRECTION:", i)
@@ -90,15 +103,22 @@ def userInput():
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
-        userInput = input("What would you like to do next?\n")
+        userInput = raw_input("What would you like to do next?\n")
         sys.stdout.flush()
     #split text by " "(space)
         lowerInput = userInput.lower()
         words = lowerInput.split()
+        #replacing any prepositions with at
+        prepositions = ['on', 'above', 'about', 'onto', 'into', 'below', 'in', 'around', 'behind', 'beside', 'by', 'down', 'inside', 'through', 'under']
+        for i in range(len(words) - 1, -1, -1):
+            for p in prepositions:
+                if words[i] == p:
+                    words[i] = "at"
         #taking out "the" or "a", we don't need it
         for i in range(len(words) - 1, -1, -1):
             if words[i] == "the" or words[i] == "a":
                 del words[i]
+
     #analyze each word
         specVerb = helpVerbs(words)
         if specVerb != 0 and specVerb != 1: 
@@ -106,8 +126,9 @@ def userInput():
                 specialNoun = "N/A"
                 return specVerb, specialNoun
             elif specVerb[0] == "lookat":
-                return specVerb[0], specVerb[1]  
-            elif specVerb == "north" or "south" or "east" or "west":
+                return specVerb[0], specVerb[1]
+                #get ride of the rest of these  
+            elif specVerb == "north" or specVerb == "south" or specVerb == "east" or specVerb == "west":
                 return specVerb, "N/A" 
             else:
                 return specVerb, "N/A"
@@ -150,8 +171,8 @@ def userInput():
 if __name__ == '__main__':
     SV = "startingValue"
     actionNoun = userInput()
-    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame']
-    finalRooms = ['cella', 'cellb', ]
+    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame', 'help', 'inventory']
+    finalRooms = ['cella', 'cellb']
     for idx, x in enumerate(finalActions):
         if actionNoun[0] == x:
             print ("\nVerb:", actionNoun[0])
