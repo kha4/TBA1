@@ -1,5 +1,7 @@
 #include statements
 import sys
+import gameEngine
+import gameState
 
 
 #returns the alias for the verb entered by the player
@@ -14,9 +16,15 @@ def findAlias(x):
                 return actionsGrid[idx][0]
 
 #retuns if the entered verb is one of the special help verbs
-def helpVerbs(words):
+def helpVerbs(words, newGame):
     specialFlag = 0
-    nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect']
+    # Try this, I think this should work.  If you need to validate anything else
+    # You use a similar setup
+    nouns = []
+    for item in newGame.objectList:
+        if (item['Location'] == newGame.currentRoom):
+            nouns.append(item['Name'])
+    #nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect']
     #pull in the valid room exits
     roomExits = ['north', 'south', 'west', 'east']
     #pull in the valid ones, hard coded for now
@@ -86,7 +94,7 @@ def helpVerbs(words):
 
 
 
-def userInput():
+def userInput(newGame):
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
@@ -96,7 +104,7 @@ def userInput():
         lowerInput = userInput.lower()
         words = lowerInput.split()
         #taking out "the" or "a", we don't need it
-        for i in range(len(words) - 1, -1, -1):
+        for i in range(len(words, newGame) - 1, -1, -1):
             if words[i] == "the" or words[i] == "a":
                 del words[i]
     #analyze each word
