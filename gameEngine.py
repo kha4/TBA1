@@ -3,6 +3,8 @@ import mainMenu
 import gameState
 import roomParser
 import textParser
+import gameObjects
+import passages
 import sys
 from os import system, name
 
@@ -10,14 +12,16 @@ def main():
 
     menuSelection = mainMenu.display()
 
-    #print(menuSelection) #for testing
-
     if (menuSelection == "1"):
         newGame = gameState.gameState()
         roomParser.parseNewRoomData(newGame)
+        gameObjects.createObjectList(newGame)
+        passages.createPassages(newGame)
     elif (menuSelection == "2"):
         newGame = gameState.gameState()
         roomParser.parseNewRoomData(newGame)
+        gameObjects.createObjectList(newGame)
+        passages.createPassages(newGame)
         newGame.loadSavedGame()
     else:
         print ("Goodbye")
@@ -25,17 +29,12 @@ def main():
     #gameplay loop would start here
     newGame.printRoomDescription()
 
-    #print (newGame.objectList)
-    #print (newGame.passageList)
+    #Call for testing
+    newGame.testSuite()
 
     while (newGame.gameOver() == 0):
-        verb, noun = textParser.userInput()
+        verb, noun = textParser.userInput(newGame)
         newGame.modifyState(verb, noun)
-        #newGame.displayInventory() #for testing
-
-
-
-
 
 
 if __name__ == "__main__":
