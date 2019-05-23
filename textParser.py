@@ -16,41 +16,30 @@ def findAlias(x):
                 return actionsGrid[idx][0]
 
 #retuns if the entered verb is one of the special help verbs
-def helpVerbs(words, newGame):
+def helpVerbs(words, newGame, gameNouns, adjRooms):
     specialFlag = 0
-    
-    # Try this, I think this should work.  If you need to validate anything else
-    # You use a similar setup
-    nouns = []
-    for item in newGame.objectList:
-        if (item['Location'] == newGame.currentRoom):
-            nouns.append(item['Name'])
 
-
-    #nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect']
-    #pull in the valid room exits
     roomExits = ['north', 'south', 'west', 'east']
-    #pull in the valid ones, hard coded for now
-    adjRooms = ['cella', 'cellb', 'Door1', 'Door2']
+    # adjRooms = ['cella', 'cellb', 'Door1', 'Door2']
+
     for idx, x in enumerate(words):
         #looking for a spcial verb
         specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame']
         for y in specialVerbs:
             if x == y:
-                print ("FOUND SPECIAL VERB:", y)
+                # print ("FOUND SPECIAL VERB:", y)
                 #checking if there is a valid noun to look at or just using look
                 if x == "look":
                     try:
                         words[idx+1]
                         if words[idx+1] == "at":
-                            for i in nouns:
-                                #change to try, can't do if
+                            for i in gameNouns:
                                 try:
                                     words[idx+2]
                                     if words[idx+2] == i:
                                         #we understand what the player wants to look at, and is a valid item
                                         specialFlag = 1
-                                        print ("look at noun:", i)
+                                        # print ("look at noun:", i)
                                         return "lookat", i
                                 except:
                                     print ("You need to include an item to look at.\n")
@@ -88,13 +77,13 @@ def helpVerbs(words, newGame):
                 if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame":
                     try:
                         words[idx+1]
-                        print "To use the command", x, "just type:", x, "\n"
+                        print ("To use the command", x, "just type:", x, "\n")
                         return 0
                     except:
                         pass
                     try:
                         words[idx-2]
-                        print "To use the command", x, "just type:", x, "\n"
+                        print ("To use the command", x, "just type:", x, "\n")
                         return 0
                     except:
                         return x
@@ -108,11 +97,11 @@ def helpVerbs(words, newGame):
 
 
 
-def userInput(newGame):
+def userInput(newGame, gameNouns, adjRooms):
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
-        userInput = raw_input("What would you like to do next?\n")
+        userInput = input("What would you like to do next?\n")
         sys.stdout.flush()
     #split text by " "(space)
         lowerInput = userInput.lower()
@@ -124,12 +113,12 @@ def userInput(newGame):
                 if words[i] == p:
                     words[i] = "at"
         #taking out "the" or "a", we don't need it
-        for i in range(len(words, newGame) - 1, -1, -1):
+        for i in range(len(words) - 1, -1, -1):
             if words[i] == "the" or words[i] == "a":
                 del words[i]
 
     #analyze each word
-        specVerb = helpVerbs(words)
+        specVerb = helpVerbs(words, newGame, gameNouns, adjRooms)
         if specVerb != 0 and specVerb != 1: 
             if specVerb == "look":
                 specialNoun = "N/A"
@@ -137,8 +126,8 @@ def userInput(newGame):
             elif specVerb[0] == "lookat":
                 return specVerb[0], specVerb[1]
                 #get ride of the rest of these  
-            elif specVerb == "north" or specVerb == "south" or specVerb == "east" or specVerb == "west":
-                return specVerb, "N/A" 
+            # elif specVerb == "north" or specVerb == "south" or specVerb == "east" or specVerb == "west":
+            #     return specVerb, "N/A" 
             else:
                 return specVerb, "N/A"
 
@@ -150,26 +139,25 @@ def userInput(newGame):
                     'push', 'press', 'shove', 'drink', 'sip', 'gulp', 'slurp', 'suck', 'open', 'expand', 'free', 'take', 'grab']
                     for y in keywords:
                         if x == y:
-                            print ("FOUND VERB:", x)
+                            # print ("FOUND VERB:", x)
                             alias = findAlias(x)
-                            print ("FOUND ALIAS:", alias)
+                            # print ("FOUND ALIAS:", alias)
                             #look for nouns following key words
-                            nouns = ['bed', 'desk', 'table', 'chair', 'staircase', 'lamp', 'ect', 'key', 'Door1', 'Door2']
                             understandFlag = 2 
-                            for i in nouns:
+                            for i in gameNouns:
                                 try:
                                     if words[idx+1] == i:
-                                        print ("FOUND NOUN:", i)
+                                        # print ("FOUND NOUN:", i)
                                         userNoun = i
                                         #confirm understand, we have action and noun that we know so we can exit
                                         understandFlag = 1
                                 except:
-                                    print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
+                                    print ("1You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
                                     understandFlag = 3
                                     break
                             #if we understand the verb but not the noun
                             if understandFlag == 2:
-                                print ("1You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
+                                print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
             #if we don't understand the verb
             if understandFlag == 0:
                 print ("I'm sorry, I don't understand. Please enter a different phrase.\n")
@@ -177,21 +165,36 @@ def userInput(newGame):
     return alias, userNoun
 
 
-if __name__ == '__main__':
+def parse(newGame):
     SV = "startingValue"
-    actionNoun = userInput()
+    gameNouns = []
+    for item in newGame.objectList:
+        if (item['Location'] == newGame.currentRoom):
+            gameNouns.append(item['Name'].lower())
+
+    print ("nouns pulled in are: ", gameNouns)
+    adjRooms = []
+    for item in newGame.passageList:
+        if (item['Location'] == newGame.currentRoom):
+            adjRooms.append(item['Name'].lower())
+
+    print ("Exits pulled in are: ", adjRooms)
+
+    actionNoun = userInput(newGame, gameNouns, adjRooms)
     finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame', 'help', 'inventory']
-    finalRooms = ['cella', 'cellb']
     for idx, x in enumerate(finalActions):
         if actionNoun[0] == x:
             print ("\nVerb:", actionNoun[0])
             print ("User Noun:", actionNoun[1])
+            return actionNoun[0], actionNoun[1]
     counter = 20
-    for idx, x in enumerate(finalRooms):
+    for idx, x in enumerate(adjRooms):
         if actionNoun[0] == x:
-            print ("\nVerb:", actionNoun[0])
-            print ("User Noun:", actionNoun[1])
+            print ("\nVerb:", "go")
+            print ("User Noun:", actionNoun[0])
+            return "go", actionNoun[0]
         counter = counter + 1
+    
             
             #this is how it would go back to the main program, with the correct flag and item
             # return flag, actionNoun[1]

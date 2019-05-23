@@ -33,7 +33,7 @@ def main():
     newGame.testSuite()
 
     while (newGame.gameOver() == 0):
-        verb, noun = textParser.userInput(newGame)
+        verb, noun = textParser.parse(newGame)
         newGame.modifyState(verb, noun)
 
 
