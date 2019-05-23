@@ -30,7 +30,7 @@ def createObjectList(newGame):
 	bookShelves = {'Name': 'Book Shelves', 'Description': 'The book shelves are filled with old, dusty books. Nothing looks interesting here.', 'Location': 'Library', 'Movable': 'n'}
 	newGame.addObject(bookShelves)
 
-	desk = {'Name': 'Desk', 'Description': 'You found glue.', 'Looks like an ordinary desk. There are books scattered around. Someone was reading "Rafts for Dummies". Looks intriguing.', 'Location': 'Library', 'Movable': 'n', 'HiddenItem': 'Glue'}
+	desk = {'Name': 'Desk', 'Description': 'You found glue. Looks like an ordinary desk. There are books scattered around. Someone was reading \"Rafts for Dummies\". Looks intriguing.', 'Location': 'Library', 'Movable': 'n', 'HiddenItem': 'Glue'}
 	newGame.addObject(desk)
 
 	bookCart = {'Name': 'Book Cart', 'Description': 'The wheel is broken. It has not been used in months.', 'Location': 'Library', 'Movable': 'n'}
@@ -45,7 +45,7 @@ def createObjectList(newGame):
 	coatRack = {'Name': 'Coat Rack', 'Description': 'You found raincoats.', 'ShortDesc': 'The coat rack seems to be empty.', 'Location': 'Visiting Room', 'Movable': 'n', 'HiddenItem': 'Raincoats'}
 	newGame.addObject(coatRack)
 
-	raincoats = {'Name': 'Raincoats', 'These raincoats seem to be extremely reliable. No water would be able to get on you. Looks like they were probably made for visitors', 'Location': 'Visiting Room', 'Movable': 'y'}
+	raincoats = {'Name': 'Raincoats', 'Description': 'These raincoats seem to be extremely reliable. No water would be able to get on you. Looks like they were probably made for visitors', 'Location': 'Visiting Room', 'Movable': 'y'}
 	newGame.addObject(raincoats)
 
 	fence = {'Name': 'Fence', 'Description': 'This barbed wire fence is keeping prisoners inside of the yard. Does not seem too high though. You can see the shore from here.', 'Location': 'Yard', 'Movable': 'n'}

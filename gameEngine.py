@@ -3,6 +3,8 @@ import mainMenu
 import gameState
 import roomParser
 import textParser
+import gameObjects
+import passages
 import sys
 from os import system, name
 
@@ -13,9 +15,13 @@ def main():
     if (menuSelection == "1"):
         newGame = gameState.gameState()
         roomParser.parseNewRoomData(newGame)
+        gameObjects.createObjectList(newGame)
+        passages.createPassages(newGame)
     elif (menuSelection == "2"):
         newGame = gameState.gameState()
         roomParser.parseNewRoomData(newGame)
+        gameObjects.createObjectList(newGame)
+        passages.createPassages(newGame)
         newGame.loadSavedGame()
     else:
         print ("Goodbye")
