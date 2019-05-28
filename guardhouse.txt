@@ -1,0 +1,4 @@
+Guardhouse
+You've arrive at the Guardhouse! It is massive and heavily fortified, overseeing the Yard. The only passageway is West back to the Yard. You see a spotlight and a few guards here.
+You're back at the Guardhouse. Passageways: West - Yard. Features: Spotlight, Guards.
+not visited

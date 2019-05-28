@@ -1,0 +1,4 @@
+Dock
+You've arrived at the Dock! You can hear the waves crashing and the seagulls squawking. Everything around seems damp and crusted in mold. The Yard is north of this area and the Boat is to the south. On the Dock you see a desk and some lockers.
+You're back at the Dock. Passageways: North - Yard, South - Boat. Features: Desk, Lockers.
+not visited

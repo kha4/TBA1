@@ -1,0 +1,4 @@
+Warden Office
+You've arrived at the Warden Office! What a messy office. The warden must be a slob. The only way in and out is east toward the Recreation Yard. You see a desk in the middle of the office and a sleeping warden behind it. Better not wake him up. There is also a bookshelf and a bird cage in the corner.
+You're back at the Warden Office. Passageways: East - Recreation Yard. Features: - Desk, Warden, Bookshelf, Bird Cage.
+not visited

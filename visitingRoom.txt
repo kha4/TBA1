@@ -1,4 +1,4 @@
 Visiting Room
-You've arrived at the Visiting Room! It looks very dreary and sad. Not a great place to spend time with family. The Sally Port is to the north and the Yard is to the south. The only things you see here are the visitation phone and a guard.
-You're back at the Visiting Room. Passageways: North - Sally Port, South - Yard. Features: Visitation Phone, Guard.
+You've arrived at the Visiting Room! It looks very dreary and sad. Not a great place to spend time with family. The Sally Port is to the north and the Yard is to the south. The only things you see here are the visitation phone, a coat rack, and a guard.
+You're back at the Visiting Room. Passageways: North - Sally Port, South - Yard. Features: Visitation Phone, Coat Rack, Guard.
 not visited

@@ -1,0 +1,4 @@
+Boat
+You've arrived at the Boat! It seems to be old and out of order. The entire Boat is soaked with water from both the rain and the seawater. The only way in and out is to the north towards the Dock. On the boat you see a storage chest and the boat controls.
+You're back at the Boat. Passageways: North - Dock. Features: Storage Chest, Boat Controls.
+not visited
