@@ -6,7 +6,7 @@ import gameEngine
 def createPassages(newGame):
 
 
-    PCtoCBA = {'Name': 'PCtoCBA', 'Description': 'Cell Block B', 'Location': 'Prison Cell', 'Direction': 'South', 'Locked': 'y', 'KeytoOpen': 'key'}
+    PCtoCBA = {'Name': 'PCtoCBA', 'Description': 'Cell Block A', 'Location': 'Prison Cell', 'Direction': 'South', 'Locked': 'y', 'KeytoOpen': 'key'}
     newGame.addPassage(PCtoCBA)
 
     CBAtoPC = {'Name': 'CBAtoPC', 'Description': 'Prison Cell', 'Location': 'Cell Block A', 'Direction': 'North', 'Locked': 'y', 'KeytoOpen': 'key'}
@@ -15,7 +15,7 @@ def createPassages(newGame):
     CBAtoMH = {'Name': 'CBAtoMH', 'Description': 'Mess Hall', 'Location': 'Cell Block A', 'Direction': 'West', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(CBAtoMH)
 
-    MHtoCBA = {'Name': 'MHtoCBA', 'Description': 'Cell Block B', 'Location': 'Mess Hall', 'Direction': 'East', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
+    MHtoCBA = {'Name': 'MHtoCBA', 'Description': 'Cell Block A', 'Location': 'Mess Hall', 'Direction': 'East', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(MHtoCBA)
 
     MHtoK = {'Name': 'MHtoK', 'Description': 'Kitchen', 'Location': 'Mess Hall', 'Direction': 'West', 'Locked': 'n'}
@@ -27,13 +27,13 @@ def createPassages(newGame):
     CBAtoL = {'Name': 'CBAtoL', 'Description': 'Library', 'Location': 'Cell Block A', 'Direction': 'South', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(CBAtoL)
 
-    LtoCBA = {'Name': 'LtoCBA', 'Description': 'Cell Block B', 'Location': 'Library', 'Direction': 'North', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
+    LtoCBA = {'Name': 'LtoCBA', 'Description': 'Cell Block A', 'Location': 'Library', 'Direction': 'North', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(LtoCBA)
 
     CBAtoSP = {'Name': 'CBAtoSP', 'Description': 'Sally Port', 'Location': 'Cell Block A', 'Direction': 'East', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(CBAtoSP)
 
-    SPtoCBA = {'Name': 'SPtoCBA', 'Description': 'Cell Block B', 'Location': 'Sally Port', 'Direction': 'West', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
+    SPtoCBA = {'Name': 'SPtoCBA', 'Description': 'Cell Block A', 'Location': 'Sally Port', 'Direction': 'West', 'Locked': 'y', 'KeytoOpen': 'lockingMech'}
     newGame.addPassage(SPtoCBA)
 
     SPtoA = {'Name': 'SPtoA', 'Description': 'Armory', 'Location': 'Sally Port', 'Direction': 'North', 'Locked': 'n'}

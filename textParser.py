@@ -118,9 +118,18 @@ def userInput(newGame, gameNouns, adjRooms):
                 if words[i] == p:
                     words[i] = "at"
         #taking out "the" or "a", we don't need it
-        for i in range(len(words) - 1, -1, -1):
-            if words[i] == "the" or words[i] == "a":
-                del words[i]
+        for idx, i in enumerate(words):
+            if words[idx] == "the":
+                del words[idx]
+            if words[idx] == "a":
+                try:
+                    words[idx-1]
+                    if words[idx-1] == "block":
+                        pass
+                    else:
+                        del words[idx]
+                except:
+                    del words[idx]
 
     #analyze each word
         specVerb = helpVerbs(words, newGame, gameNouns, adjRooms)
@@ -190,7 +199,6 @@ def parse(newGame):
             print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
     # for idx, x in enumerate(adjRooms):
-    print (actionNoun[0])
     if actionNoun[0] == adjRooms:
         print ("\nVerb:", "go")
         print ("User Noun:", actionNoun[0])
