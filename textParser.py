@@ -60,8 +60,13 @@ def helpVerbs(words, newGame, gameNouns, adjRooms):
                             if words[idx+1] == i:
                                 return i
                         for i in adjRooms:
-                            if words[idx+1] == i:
-                                return i
+                            for i in range(len(words) - 1, -1, -1):
+                                if words[i] == "go":
+                                    del words[i]
+                            newWords = ' '.join(map(str, words))
+                            newWords = [newWords]
+                            if newWords == adjRooms:
+                                return adjRooms
                         print ("That is not a valid direction you can go in.\n")
                         return 0
                     except:
@@ -125,9 +130,6 @@ def userInput(newGame, gameNouns, adjRooms):
                 return specVerb, specialNoun
             elif specVerb[0] == "lookat":
                 return specVerb[0], specVerb[1]
-                #get ride of the rest of these  
-            # elif specVerb == "north" or specVerb == "south" or specVerb == "east" or specVerb == "west":
-            #     return specVerb, "N/A" 
             else:
                 return specVerb, "N/A"
 
@@ -176,7 +178,7 @@ def parse(newGame):
     adjRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
-            adjRooms.append(item['Name'].lower())
+            adjRooms.append(item['Description'].lower())
 
     print ("Exits pulled in are: ", adjRooms)
 
@@ -187,32 +189,13 @@ def parse(newGame):
             print ("\nVerb:", actionNoun[0])
             print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
-    counter = 20
-    for idx, x in enumerate(adjRooms):
-        if actionNoun[0] == x:
-            print ("\nVerb:", "go")
-            print ("User Noun:", actionNoun[0])
-            return "go", actionNoun[0]
-        counter = counter + 1
+    # for idx, x in enumerate(adjRooms):
+    print (actionNoun[0])
+    if actionNoun[0] == adjRooms:
+        print ("\nVerb:", "go")
+        print ("User Noun:", actionNoun[0])
+        return "go", actionNoun[0]
     
-            
-            #this is how it would go back to the main program, with the correct flag and item
-            # return flag, actionNoun[1]
-
-#NOTES:
-
-#in order for me to verify if the item is able to be used, I will need to pull in the list of items in each room from the room files
-#need to wait for those to be created, can do a practice one
-#how are we pulling this together? If I have this program, will the other programs call it or are we putting it all in one program?
-    #put it all in one main and each program is a "function" that we call when needed?
-#mid point check-in
-#update on the features we want to use? How do we want to use them?
-
-#create a create verb or build verb - if they don't have all the required items then throw a "You don't have all the items you need to build"
-#how to read in all the items in the room from the txt files
-
-#ADD TOLOWER FUNCTION
-
 
 # def printRoomDescription(self):
 #     for item in self.roomList:
