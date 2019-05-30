@@ -16,18 +16,14 @@ def findAlias(x):
                 return actionsGrid[idx][0]
 
 #retuns if the entered verb is one of the special help verbs
-def helpVerbs(words, newGame, gameNouns, adjRooms):
+def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
     specialFlag = 0
-
-    roomExits = ['north', 'south', 'west', 'east']
-    # adjRooms = ['cella', 'cellb', 'Door1', 'Door2']
 
     for idx, x in enumerate(words):
         #looking for a spcial verb
         specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame']
         for y in specialVerbs:
             if x == y:
-                # print ("FOUND SPECIAL VERB:", y)
                 #checking if there is a valid noun to look at or just using look
                 if x == "look":
                     try:
@@ -39,7 +35,6 @@ def helpVerbs(words, newGame, gameNouns, adjRooms):
                                     if words[idx+2] == i:
                                         #we understand what the player wants to look at, and is a valid item
                                         specialFlag = 1
-                                        # print ("look at noun:", i)
                                         return "lookat", i
                                 except:
                                     print ("You need to include an item to look at.\n")
@@ -56,30 +51,36 @@ def helpVerbs(words, newGame, gameNouns, adjRooms):
                 if x == "go":
                     try:
                         words[idx+1]
-                        for i in roomExits:
+                        for i in dirRooms:
                             if words[idx+1] == i:
-                                return i
+                                return dirRooms
                         for i in adjRooms:
                             for i in range(len(words) - 1, -1, -1):
                                 if words[i] == "go":
                                     del words[i]
                             newWords = ' '.join(map(str, words))
-                            newWords = [newWords]
-                            if newWords == adjRooms:
+                            if [newWords] == adjRooms:
                                 return adjRooms
                         print (newWords,"is not a valid direction you can go in.")
-                        print ("The available exits are:", adjRooms, ".\n")
+                        print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
                         return 0
                     except:
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
                         return 0
-                if x == "north" or x == "south" or x == "east" or x == "west":
+
+                if [x] == dirRooms:
                     try:
                         words[idx+1]
                         print ("To go a direction try: \"go north\" or just \"north\".")
                         return 0
                     except:
-                        return x
+                        return dirRooms
+
+                if x == "south" or x == "north" or x == "east" or x == "west":
+                    print (x,"is not a valid direction you can go in.")
+                    print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
+                    return 0                    
+
                 if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame":
                     try:
                         words[idx+1]
@@ -93,17 +94,23 @@ def helpVerbs(words, newGame, gameNouns, adjRooms):
                         return 0
                     except:
                         return x
-
-        for i in adjRooms:
+        
+        catRooms = ['cell', 'prison', 'mess', 'kitchen', 'library', 'sally', 'armory', 'visiting', 'yard', 'recreation', 'guardhouse', 'dock', 'boat', 'warden']
+        for i in catRooms:
             if x == i:
-                print ("FOUND DIRECTION:", i)
-                return i
-
+                newWords = ' '.join(map(str, words))
+                if [newWords] == adjRooms:
+                    return adjRooms
+                else:
+                    print (newWords,"is not a valid direction you can go in.")
+                    print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
+                    return 0
+                            
     return 1
 
 
 
-def userInput(newGame, gameNouns, adjRooms):
+def userInput(newGame, gameNouns, adjRooms, dirRooms):
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
@@ -133,7 +140,7 @@ def userInput(newGame, gameNouns, adjRooms):
                     del words[idx]
 
     #analyze each word
-        specVerb = helpVerbs(words, newGame, gameNouns, adjRooms)
+        specVerb = helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms)
         if specVerb != 0 and specVerb != 1: 
             if specVerb == "look":
                 specialNoun = "N/A"
@@ -192,19 +199,29 @@ def parse(newGame):
 
     print ("Exits pulled in are: ", adjRooms)
 
-    actionNoun = userInput(newGame, gameNouns, adjRooms)
-    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'north', 'south', 'east', 'west', 'savegame', 'loadgame', 'help', 'inventory']
-    for idx, x in enumerate(finalActions):
+    dirRooms = []
+    for item in newGame.passageList:
+        if (item['Location'] == newGame.currentRoom):
+            dirRooms.append(item['Direction'].lower())
+
+    print ("Directions pulled in are: ", dirRooms)
+
+    actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms)
+    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory']
+    for x in finalActions:
         if actionNoun[0] == x:
             print ("\nVerb:", actionNoun[0])
             print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
-    # for idx, x in enumerate(adjRooms):
     if actionNoun[0] == adjRooms:
         print ("\nVerb:", "go")
         print ("User Noun:", actionNoun[0])
         return "go", actionNoun[0]
-    
+    if actionNoun[0] == dirRooms:
+        print ("\nVerb:", "go")
+        print ("User Noun:", actionNoun[0])
+        return "go", actionNoun[0]
+
 
 # def printRoomDescription(self):
 #     for item in self.roomList:
