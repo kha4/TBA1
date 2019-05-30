@@ -67,7 +67,8 @@ def helpVerbs(words, newGame, gameNouns, adjRooms):
                             newWords = [newWords]
                             if newWords == adjRooms:
                                 return adjRooms
-                        print ("That is not a valid direction you can go in.\n")
+                        print (newWords,"is not a valid direction you can go in.")
+                        print ("The available exits are:", adjRooms, ".\n")
                         return 0
                     except:
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
@@ -119,7 +120,7 @@ def userInput(newGame, gameNouns, adjRooms):
                     words[i] = "at"
         #taking out "the" or "a", we don't need it
         for idx, i in enumerate(words):
-            if words[idx] == "the":
+            if words[idx] == "the" or words[idx] == "to":
                 del words[idx]
             if words[idx] == "a":
                 try:
