@@ -25,12 +25,14 @@ def main():
         newGame.loadSavedGame()
     else:
         print ("Goodbye")
+        return 0;
+
 
     #gameplay loop would start here
     newGame.printRoomDescription()
 
     #Call for testing
-    newGame.testSuite()
+    #newGame.testSuite()
 
     while (newGame.gameOver() == 0):
         verb, noun = textParser.parse(newGame)

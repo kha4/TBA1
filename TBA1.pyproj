@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10136a46-f6c2-435d-abaf-e624eea4eee6}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>gameEngine.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="armory.txt" />
+    <Content Include="boat.txt" />
+    <Content Include="cellBlockA.txt" />
+    <Content Include="cellHouseRoof.txt" />
+    <Content Include="dock.txt" />
+    <Content Include="guardhouse.txt" />
+    <Content Include="kitchen.txt" />
+    <Content Include="library.txt" />
+    <Content Include="messHall.txt" />
+    <Content Include="prisonCell.txt" />
+    <Content Include="recreationYard.txt" />
+    <Content Include="sallyPort.txt" />
+    <Content Include="savedgame.txt" />
+    <Content Include="visitingRoom.txt" />
+    <Content Include="wardenOffice.txt" />
+    <Content Include="yard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gameEngine.py" />
+    <Compile Include="gameObjects.py" />
+    <Compile Include="gameState.py" />
+    <Compile Include="mainMenu.py" />
+    <Compile Include="passages.py" />
+    <Compile Include="roomParser.py" />
+    <Compile Include="roomParserX.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="textParser.py" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

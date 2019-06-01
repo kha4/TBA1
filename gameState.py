@@ -13,25 +13,92 @@ class gameState:
         self.objectList = []
         self.roomStatus = []
         self.passageList = []
-        #print ("GameState Instance Created")#for testing
 
+
+    #hit', 'pull', 'eat', 'scratch', 'break', 'push', 'drink',
     def modifyState(self, verb, noun):
         if (verb == 'take'):
             for item in self.objectList:
-                if (item['Name'] == noun and item['Movable'] == 'y'):
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun and item['Movable'] == 'y'):
+                    print (item['Name'], "has been added to your inventory.")
                     self.addInventory(noun)
                     return
+                elif (lowCaseItem == noun and item['Movable'] == 'n'):
+                    print (item['Name'], "can't be added to your inventory.")
+                    return
         elif (verb == 'open'):
-            for item in self.passageList:
+            for item in self.objectList:
                 if (item['Name'] == noun):
-                    self.currentRoom = item['Connection']
-                    self.printRoomDescription()
+                    print ("You open ", item['Name'], "and inspect.")
+                    print (item['Description'], "\n")
                     return
         elif (verb == 'drop'):
             for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun and item['Location'] == 'Inventory'):
+                    self.removeInventory(noun)
+                    print (item['Name'], " has been removed from your inventory.")
+                    return
+        elif (verb == 'look'):
+            for item in self.roomList:
+                if (item['Name'] == self.currentRoom):
+                    print ("Location: ", item['Name'])
+                    print (item['LongDesc'], '\n')
+                    return
+        elif (verb == 'lookat'):
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                print (lowCaseItem)
+                if (lowCaseItem == noun):
+                    print (item['Name'], ": ")
+                    print (item['Description'], "\n")
+                    return
+        elif (verb == 'help'):
+            print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
+            print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
+            return
+        elif (verb == 'inventory'):
+            self.displayInventory()
+            return
+        elif (verb == 'throw'):
+            for item in self.objectList:
                 if (item['Name'] == noun and item['Location'] == 'Inventory'):
                     self.removeInventory(noun)
+                    print (item['Name'], " has been removed from your inventory.")
                     return
+        elif (verb == 'go'):
+            for item in self.passageList:
+                print (item['Location'])
+                print (self.currentRoom)
+                print (item['Direction'])
+                print (noun)
+                print (item['Locked'])
+                if (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'n'):
+                    print ("You are entering...\n")
+                    self.currentRoom = item['Description']
+                    self.printRoomDescription()
+                    return
+                elif (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'y'):
+                    print ("It's locked, see if you can find something to open it.")
+                    return
+        elif (verb == 'hit'):
+            print ("I don't think you want to hit that.")
+        elif (verb == 'pull'):
+            print ("I don't think you want to pull that.")
+        elif (verb == 'eat'):
+            print ("I don't think you want to eat that.")
+        elif (verb == 'scratch'):
+            print ("I don't think you want to scratch that.")
+        elif (verb == 'break'):
+            print ("I don't think you want to break that.")
+        elif (verb == 'push'):
+            print ("I don't think you want to push that.")
+        elif (verb == 'drink'):
+            print ("I don't think you want to drink that.")
         elif (verb == 'savegame'):
             self.saveGame()
             return
@@ -39,8 +106,7 @@ class gameState:
             self.loadSavedGame()
             self.printRoomDescription()
             return
-
-        #print ("State modified")
+    #hit', 'pull', 'eat', 'scratch', 'break', 'push', 'drink',  
 
     def setRoomStatus(self, roomName):
         for item in self.roomList:
@@ -67,7 +133,7 @@ class gameState:
         self.playerInventory.append(itemName)
         for item in self.objectList:
             if (item['Name'] == itemName):
-                item['Location'] = 'Inventory'
+                item['Location'] = 'inventory'
                 #print ("Item added to inventory")#for testing
 
     def removeInventory(self, itemName):
@@ -177,15 +243,15 @@ class gameState:
         print (self.playerInventory, '\n')
 
     def testSuite(self):
-        print ("**********This is a testing function that was called**********")
-        print ("List of all rooms loaded: \n")
-        print (self.roomList)
-        print ("List of all passages loaded: \n")
-        print (self.passageList)
+        #print ("**********This is a testing function that was called**********")
+        #print ("List of all rooms loaded: \n")
+        #print (self.roomList)
+        #print ("List of all passages loaded: \n")
+        #print (self.passageList)
         print ("List of all objects loaded: \n")
         print (self.objectList)
-        print ("Current room: \n")
-        print (self.currentRoom)
+        #print ("Current room: \n")
+        #print (self.currentRoom)
         print ("********************End of Test Function***********************")
 
 
