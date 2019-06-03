@@ -1,4 +1,4 @@
 Armory
-You've arrived at the Armory! It seems to be secure and heavily guarded. The door and the walls are extremely thickand would be near impossible to break through. The only way out is back south to the Sally Port. You see a guard and many gun racks.
-You're back at the Armory. Passageways: South - Sally Port. Features: Guard, Gun Racks.
+You've arrived at the Armory! It seems to be secure and heavily guarded. The door and the walls are extremely thickand would be near impossible to break through. The only way out is back south to the Sally Port. You see a guard, rope, and many gun racks.
+You're back at the Armory. Passageways: South - Sally Port. Features: Guard, Rope, Gun Racks.
 not visited

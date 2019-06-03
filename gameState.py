@@ -30,18 +30,63 @@ class gameState:
                     return
         elif (verb == 'open'):
             for item in self.objectList:
-                if (item['Name'] == noun):
-                    print ("You open ", item['Name'], "and inspect.")
-                    print (item['Description'], "\n")
-                    return
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'air vent'):
+                        print ("You open ", item['Name'], "and inspect.")
+                        print (item['Description'], "\n")
+                        print ("You are entering...Cell House Roof.\n")
+                        self.currentRoom = "Cell House Roof"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'pantry'):
+                        print ("You open the ", item['Name'], "and inspect.")
+                        print (item['Description'], "\n")
+                        return
+                    elif (noun == 'door lock control panel' and self.currentRoom = "Sally Port"):
+                        if (item['HiddenItem'] == 'locked'):
+                            for keyItem in self.playerInventory:
+                                if (keyItem == 'warden key'):
+                                    item['HiddenItem'] == 'none'
+                                    print ("You open and inspect the door lock control panel.\n")
+                                    print (item['Description'], "\n")
+                                    print ("The door to the Armory has been unlocked.\n")
+                                    self.passageList[SPtoA]['Locked'] = 'n'
+                                    return
+                            print (item['Description'], "\n")
+                            print ("You need a certain key to open it.\n")
+                            return
+                        else:
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'desk' and self.currentRoom = "Library"):
+                        if (item['HiddenItem'] == 'glue'):
+                            item['HiddenItem'] = 'none'
+                            print ("You open the desk.\n")
+                            print (item['Description'], "\n")
+                            print ("The glue has been added to your inventory.\n")
+                            self.addInventory("glue")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("You cannot open this.\n")
+                        return
         elif (verb == 'drop'):
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
-                if (lowCaseItem == noun and item['Location'] == 'Inventory'):
-                    self.removeInventory(noun)
-                    print (item['Name'], " has been removed from your inventory.")
-                    return
+                if (lowCaseItem == noun):
+                    if (item['Location'] == 'Inventory'):
+                        self.removeInventory(noun)
+                        print (item['Name'], " has been removed from your inventory.")
+                        return
+                    else:
+                        print ("This cannot be dropped.\n")
+                        return
         elif (verb == 'look'):
             for item in self.roomList:
                 if (item['Name'] == self.currentRoom):
@@ -54,9 +99,71 @@ class gameState:
                 lowCaseItem = tmpItem.lower()
                 print (lowCaseItem)
                 if (lowCaseItem == noun):
-                    print (item['Name'], ": ")
-                    print (item['Description'], "\n")
-                    return
+                    if (noun == 'drain pipes'):
+                        if (item['HiddenItem'] == 'Key'):
+                            item['HiddenItem'] = 'none'
+                            print (item['Description'], "\n")
+                            print ("The key has been added to your inventory.")
+                            self.addInventory("key")
+                            return
+	                else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'air vent'):
+                        print (item['Description'], "\n")
+                        print ("You are entering...Cell House Roof.\n")
+                        self.currentRoom = "Cell House Roof"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'locking mechanism'):
+                        if (item['HiddenItem'] == 'locked'):
+                            item['HiddenItem'] == 'none'
+                            print (item['Description'], "\n")
+                            print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
+                            self.passageList[CBAtoMH]['Locked'] = 'n'
+                            self.passageList[CBAtoL]['Locked'] = 'n'
+                            self.passageList[CBAtoSP]['Locked'] = 'n'
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'door lock control panel'):
+                        if (item['HiddenItem'] == 'locked'):
+                            print ("You inspect the door lock control panel. ", item['Description'], "\n")
+                            print ("You need a certain key for it to work.\n")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'desk'):
+                        if (item['HiddenItem'] == 'glue'):
+                            item['HiddenItem'] = 'none'
+                            print (item['Description'], "\n")
+                            print ("The glue has been added to your inventory.")
+                            self.addInventory("glue")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'coat rack'):
+                        if (item['HiddenItem'] == 'raincoats')
+                            item['HiddenItem'] = 'none'
+                            print (item['Description'], "\n")
+                            print ("The raincoats been added to your inventory.")
+                            self.addInventory("raincoats")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print (item['Name'], ": ")
+                        print (item['Description'], "\n")
+                        return
         elif (verb == 'help'):
             print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
             print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
@@ -83,20 +190,113 @@ class gameState:
                     self.printRoomDescription()
                     return
                 elif (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'y'):
+                    for keyItem in self.playerInventory:
+                        if (item['Name'] == 'PCtoCBA' and keyItem == 'key'):
+                            print ("You use the key to unlock the door.\n")
+                            item['Locked'] = 'n'
+                            print ("You are entering...\n")
+                            self.currentRoom = item['Description']
+                            self.printRoomDescription()
+                            return
                     print ("It's locked, see if you can find something to open it.")
                     return
         elif (verb == 'hit'):
-            print ("I don't think you want to hit that.")
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun  == 'door lock control panel' and self.currentRoom = "Sally Port"):
+                        if (item['HiddenItem'] == 'locked'):
+                            print ("item['Description']", "You try hitting it and pressing buttons.\n")
+                            print ("Nothing works without a certain key.\n")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("I don't think you want to hit that.")
+                        return
         elif (verb == 'pull'):
-            print ("I don't think you want to pull that.")
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'air vent'):
+                        print ("You pull open the air vent.\n")
+                        print (item['Description'], "\n")
+                        print ("You are entering...Cell House Roof.\n")
+                        self.currentRoom = "Cell House Roof"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'coat rack'):
+                        if (item['HiddenItem'] == 'raincoats')
+                            item['HiddenItem'] = 'none'
+                            print ("You tug on the coat rack.\n")
+                            print (item['Description'], "\n")
+                            print ("The raincoats been added to your inventory.")
+                            self.addInventory("raincoats")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("I don't think you want to pull that.")
+                        return
         elif (verb == 'eat'):
-            print ("I don't think you want to eat that.")
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'gum' and item['Location'] == 'Inventory'):
+                        print ("You want to eat the old gum? That is disgusting.\n")
+                        return
+                    else:
+                        print ("I don't think you want to eat that.\n")
+                        return
         elif (verb == 'scratch'):
-            print ("I don't think you want to scratch that.")
+            for item in self.objectList
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'tables' and item['Location'] == 'Mess Hall'):
+                        if (item['HiddentItem'] == 'gum'):
+                            item['HiddenItem'] = 'none'
+                            print ("You scratch at the tables.\n")
+                            print (item['Description'], "\n")
+                            print ("The gum has been added to your inventory.\n")
+                            self.addInventory("gum")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("I don't think you want to scratch that.")
+                        return
         elif (verb == 'break'):
             print ("I don't think you want to break that.")
         elif (verb == 'push'):
-            print ("I don't think you want to push that.")
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'locking mechanism'):
+                        if (item['HiddenItem'] == 'locked'):
+                            item['HiddenItem'] == 'none'
+                            print (item['Description'], "\n")
+                            print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
+                            self.passageList[CBAtoMH]['Locked'] = 'n'
+                            self.passageList[CBAtoL]['Locked'] = 'n'
+                            self.passageList[CBAtoSP]['Locked'] = 'n'
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("I don't think you want to push that.")
         elif (verb == 'drink'):
             print ("I don't think you want to drink that.")
         elif (verb == 'savegame'):
