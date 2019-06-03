@@ -40,7 +40,7 @@ def createObjectList(newGame):
 	newGame.addObject(tables)
 
 	gum = {'Name': 'gum', 'Description': 'Looks like old, chewed up gum. Theres a hair on it too.', 'Location': 'Mess Hall', 'Movable': 'y'}
-        newGame.addObject(gum)
+	newGame.addObject(gum)
 
 	dishSink = {'Name': 'dish sink', 'Description': 'Someone needs to do the dishes.', 'Location': 'Kitchen', 'Movable': 'n'}
 	newGame.addObject(dishSink)
@@ -70,7 +70,7 @@ def createObjectList(newGame):
 	newGame.addObject(gunRacks)
 
 	rope = {'Name': 'rope', 'Description': 'This rope seems very sturdy and reliable. This could be useful.', 'Location': 'Armory', 'Movable': 'y'}
-        newGame.addObject(rope)
+	newGame.addObject(rope)
 
 	visitationPhone = {'Name': 'visitation phone', 'Description': 'You cannot hear anything. There is no one on the other side.', 'Location': 'Visiting Room', 'Movable': 'n'}
 	newGame.addObject(visitationPhone)

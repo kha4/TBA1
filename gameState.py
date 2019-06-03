@@ -106,7 +106,7 @@ class gameState:
                             print ("The key has been added to your inventory.")
                             self.addInventory("key")
                             return
-	                else:
+                        else:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
