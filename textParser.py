@@ -110,7 +110,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
 
 
 
-def userInput(newGame, gameNouns, adjRooms, dirRooms):
+def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
@@ -158,11 +158,25 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms):
                     'push', 'press', 'shove', 'drink', 'sip', 'gulp', 'slurp', 'suck', 'open', 'expand', 'free', 'take', 'grab']
                     for y in keywords:
                         if x == y:
-                            # print ("FOUND VERB:", x)
                             alias = findAlias(x)
-                            # print ("FOUND ALIAS:", alias)
-                            #look for nouns following key words
                             understandFlag = 2 
+                            if x == "drop":
+                                for p in invNouns:
+                                    try:
+                                        if words[idx+1] == p:
+                                            userNoun = p
+                                            understandFlag = 1
+                                        # break
+                                    except:
+                                        print ("You have not given an item to drop. You can drop items in your inventory.")
+                                        print ("Inventory:", invNouns, "\n")
+                                        understandFlag = 3
+                
+                                if understandFlag == 2:
+                                    print ("You can not drop that item because it is not in your inventory.")
+                                    print ("Inventory:", invNouns, "\n")
+                                    understandFlag = 3
+                                    break
                             for i in gameNouns:
                                 try:
                                     if words[idx+1] == i:
@@ -171,7 +185,7 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms):
                                         #confirm understand, we have action and noun that we know so we can exit
                                         understandFlag = 1
                                 except:
-                                    print ("1You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
+                                    print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
                                     understandFlag = 3
                                     break
                             #if we understand the verb but not the noun
@@ -192,6 +206,13 @@ def parse(newGame):
             gameNouns.append(item['Name'].lower())
 
     print ("nouns pulled in are: ", gameNouns)
+
+    invNouns = []
+    for item in newGame.playerInventory:
+        invNouns.append(item.lower())
+
+    print ("Inventory pulled in is: ", invNouns)
+
     adjRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
@@ -206,7 +227,7 @@ def parse(newGame):
 
     print ("Directions pulled in are: ", dirRooms)
 
-    actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms)
+    actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns)
     finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory']
     for x in finalActions:
         if actionNoun[0] == x:
