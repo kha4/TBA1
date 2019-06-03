@@ -160,22 +160,22 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                         if x == y:
                             alias = findAlias(x)
                             understandFlag = 2 
-                            if x == "drop":
+                            if alias == "drop":
+                                understandFlag = 4
                                 for p in invNouns:
                                     try:
                                         if words[idx+1] == p:
                                             userNoun = p
                                             understandFlag = 1
-                                        # break
+                                            return alias, userNoun
                                     except:
                                         print ("You have not given an item to drop. You can drop items in your inventory.")
                                         print ("Inventory:", invNouns, "\n")
                                         understandFlag = 3
-                
-                                if understandFlag == 2:
+                                
+                                if understandFlag == 4:
                                     print ("You can not drop that item because it is not in your inventory.")
                                     print ("Inventory:", invNouns, "\n")
-                                    understandFlag = 3
                                     break
                             for i in gameNouns:
                                 try:
@@ -185,9 +185,10 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                                         #confirm understand, we have action and noun that we know so we can exit
                                         understandFlag = 1
                                 except:
-                                    print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
-                                    understandFlag = 3
-                                    break
+                                    if understandFlag != 3:
+                                        print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
+                                        understandFlag = 3
+                                        break
                             #if we understand the verb but not the noun
                             if understandFlag == 2:
                                 print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
