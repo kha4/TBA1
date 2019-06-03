@@ -28,17 +28,20 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                 if x == "look":
                     try:
                         words[idx+1]
-                        if words[idx+1] == "at":
+                        if words[idx+1] == "at":                 
+                            del words[idx]
+                            del words[idx]
+                            if words:
+                                newWords = ' '.join(map(str, words))
+                            else:
+                                print ("You need to include an item to look at.\n")
+                                return 0                            
                             for i in gameNouns:
-                                try:
-                                    words[idx+2]
-                                    if words[idx+2] == i:
-                                        #we understand what the player wants to look at, and is a valid item
-                                        specialFlag = 1
-                                        return "lookat", i
-                                except:
-                                    print ("You need to include an item to look at.\n")
-                                    return 0
+                                if newWords == i:
+                                    #we understand what the player wants to look at, and is a valid item
+                                    specialFlag = 1
+                                    return "lookat", i
+                                   
                             if specialFlag == 0:
                                 print ("That is not a valid item to look at. You can look at items in the current room or in your inventory. Type \"inventory\" to view your inventory.\n")
                                 return 0
