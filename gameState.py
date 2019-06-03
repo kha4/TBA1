@@ -80,7 +80,7 @@ class gameState:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
-                    if (item['Location'] == 'Inventory'):
+                    if (item['Location'] == 'inventory'):
                         self.removeInventory(noun)
                         print (item['Name'], " has been removed from your inventory.")
                         return
