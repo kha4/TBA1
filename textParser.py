@@ -236,13 +236,15 @@ def parse(newGame):
             print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
     if actionNoun[0] == adjRooms:
+        str2 = ''.join(actionNoun[0])
         print ("\nVerb:", "go")
-        print ("User Noun:", actionNoun[0])
-        return "go", actionNoun[0]
+        print ("User Noun:", str2)
+        return "go", str2
     if actionNoun[0] == dirRooms:
+        str1 = ''.join(actionNoun[0])
         print ("\nVerb:", "go")
-        print ("User Noun:", actionNoun[0])
-        return "go", actionNoun[0]
+        print ("User Noun:", str1)
+        return "go", str1
 
 
 # def printRoomDescription(self):
