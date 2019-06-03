@@ -44,7 +44,7 @@ class gameState:
                         print ("You open the ", item['Name'], "and inspect.")
                         print (item['Description'], "\n")
                         return
-                    elif (noun == 'door lock control panel' and self.currentRoom = "Sally Port"):
+                    elif (noun == 'door lock control panel'):
                         if (item['HiddenItem'] == 'locked'):
                             for keyItem in self.playerInventory:
                                 if (keyItem == 'warden key'):
@@ -60,7 +60,7 @@ class gameState:
                         else:
                             print (item['ShortDesc'], "\n")
                             return
-                    elif (noun == 'desk' and self.currentRoom = "Library"):
+                    elif (noun == 'desk'):
                         if (item['HiddenItem'] == 'glue'):
                             item['HiddenItem'] = 'none'
                             print ("You open the desk.\n")
@@ -150,7 +150,7 @@ class gameState:
                             print (item['ShortDesc'], "\n")
                             return
                     elif (noun == 'coat rack'):
-                        if (item['HiddenItem'] == 'raincoats')
+                        if (item['HiddenItem'] == 'raincoats'):
                             item['HiddenItem'] = 'none'
                             print (item['Description'], "\n")
                             print ("The raincoats been added to your inventory.")
@@ -205,7 +205,7 @@ class gameState:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
-                    if (noun  == 'door lock control panel' and self.currentRoom = "Sally Port"):
+                    if (noun  == 'door lock control panel'):
                         if (item['HiddenItem'] == 'locked'):
                             print ("item['Description']", "You try hitting it and pressing buttons.\n")
                             print ("Nothing works without a certain key.\n")
@@ -230,7 +230,7 @@ class gameState:
                         self.printRoomDescription()
                         return
                     elif (noun == 'coat rack'):
-                        if (item['HiddenItem'] == 'raincoats')
+                        if (item['HiddenItem'] == 'raincoats'):
                             item['HiddenItem'] = 'none'
                             print ("You tug on the coat rack.\n")
                             print (item['Description'], "\n")
@@ -256,7 +256,7 @@ class gameState:
                         print ("I don't think you want to eat that.\n")
                         return
         elif (verb == 'scratch'):
-            for item in self.objectList
+            for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
