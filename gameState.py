@@ -185,11 +185,7 @@ class gameState:
                     return
         elif (verb == 'go'):
             for item in self.passageList:
-                print (item['Location'])
-                print (self.currentRoom)
-                print (item['Direction'])
-                print (noun)
-                print (item['Locked'])
+                description = item['Description'].lower()
                 if (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'n'):
                     print ("You are entering...\n")
                     self.currentRoom = item['Description']
@@ -197,7 +193,23 @@ class gameState:
                     return
                 elif (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'y'):
                     for keyItem in self.playerInventory:
-                        if (item['Name'] == 'PCtoCBA' and keyItem == 'key'):
+                        if (item['KeytoOpen'] == keyItem):
+                            print ("You use the key to unlock the door.\n")
+                            item['Locked'] = 'n'
+                            print ("You are entering...\n")
+                            self.currentRoom = item['Description']
+                            self.printRoomDescription()
+                            return
+                    print ("It's locked, see if you can find something to open it.")
+                    return
+                elif (item['Location'] == self.currentRoom and description == noun and item['Locked'] == 'n'):
+                    print ("You are entering...\n")
+                    self.currentRoom = item['Description']
+                    self.printRoomDescription()
+                    return
+                elif (item['Location'] == self.currentRoom and description == noun and item['Locked'] == 'y'):
+                    for keyItem in self.playerInventory:
+                        if (item['KeytoOpen'] == keyItem):
                             print ("You use the key to unlock the door.\n")
                             item['Locked'] = 'n'
                             print ("You are entering...\n")
