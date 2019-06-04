@@ -567,7 +567,8 @@ class gameState:
         fo.write('*\n')
 
         for item in self.playerInventory:
-            fo.write(item)
+            fo.write(item + '\n')
+
 
         fo.close()
 
