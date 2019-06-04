@@ -64,7 +64,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                             if newWords == i:
                                 return i
                         print (newWords,"is not a valid direction you can go in.")
-                        print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
+                        print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
                         return 0
                     except:
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
@@ -81,7 +81,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
 
                 if x == "south" or x == "north" or x == "east" or x == "west":
                     print (x,"is not a valid direction you can go in.")
-                    print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
+                    print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
                     return 0                    
 
                 if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame" or x == "quit":
@@ -102,12 +102,13 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
         for i in catRooms:
             if x == i:
                 newWords = ' '.join(map(str, words))
-                if [newWords] == adjRooms:
-                    return adjRooms
-                else:
-                    print (newWords,"is not a valid direction you can go in.")
-                    print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
-                    return 0
+                for p in adjRooms:
+                    if newWords == p:
+                        return p
+                    else:
+                        print (newWords,"is not a valid direction you can go in.")
+                        print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
+                        return 0
                             
     return 1
 
