@@ -189,7 +189,7 @@ class gameState:
                         return
         elif (verb == 'help'):
             print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
-            print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
+            print ("open, take, go, look, look at, savegame, loadgame, help, inventory.")
             return
         elif (verb == 'inventory'):
             self.displayInventory()

@@ -20,7 +20,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
 
     for idx, x in enumerate(words):
         #looking for a spcial verb
-        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame', 'quit']
+        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame', 'quit', 'exit']
         for y in specialVerbs:
             if x == y:
                 #checking if there is a valid noun to look at or just using look
@@ -69,6 +69,9 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                     except:
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
                         return 0
+                
+                if x == "exit":
+                    return "quit"
 
                 for l in dirRooms:
                     if words[idx] == l:
@@ -211,27 +214,27 @@ def parse(newGame):
         if (item['Location'] == newGame.currentRoom):
             gameNouns.append(item['Name'].lower())
 
-    print ("nouns pulled in are: ", gameNouns)
+    print ("Items in the room:", gameNouns)
 
     invNouns = []
     for item in newGame.playerInventory:
         invNouns.append(item.lower())
 
-    print ("Inventory pulled in is: ", invNouns)
+    print ("Inventory:", invNouns)
 
     adjRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
             adjRooms.append(item['Description'].lower())
 
-    print ("Exits pulled in are: ", adjRooms)
+    print ("Available exits:", adjRooms)
 
     dirRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
             dirRooms.append(item['Direction'].lower())
 
-    print ("Directions pulled in are: ", dirRooms)
+    print ("Available directions:", dirRooms)
 
     actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns)
     finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory', 'quit']
