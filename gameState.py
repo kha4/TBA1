@@ -127,9 +127,10 @@ class gameState:
                             item['HiddenItem'] == 'none'
                             print (item['Description'], "\n")
                             print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
-                            self.passageList[CBAtoMH]['Locked'] = 'n'
-                            self.passageList[CBAtoL]['Locked'] = 'n'
-                            self.passageList[CBAtoSP]['Locked'] = 'n'
+                            for door in self.passageList:
+                                description = door['Description'].lower()
+                                if(door['Description'] == 'Mess Hall' or door['Description'] == 'Library' or door['Description'] == 'Sally Port'):
+                                    door['Locked'] = 'n'
                             return
                         else:
                             print (item['Name'], ": ")
@@ -472,18 +473,6 @@ class gameState:
         #print (self.currentRoom)
         print ("********************End of Test Function***********************")
 
-    def quitGame(self):
-        save = 'z'
-
-        while (save != 'y' and save != 'n'):
-            save = input("Would you like to save your game? (y or n) > ")
-            if (save == 'y'):
-                self.saveGame()
-                return
-            elif (save == 'n'):
-                return
-            else:
-                print ("Not a valid input, next time try again.\n")
 
     def gameOver(self):
         for item in self.objectList:
