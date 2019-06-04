@@ -58,7 +58,10 @@ class gameState:
                                     print ("You open and inspect the door lock control panel.\n")
                                     print (item['Description'], "\n")
                                     print ("The door to the Armory has been unlocked.\n")
-                                    self.passageList[SPtoA]['Locked'] = 'n'
+                                    for door in self.passageList:
+                                        description = door['Description'].lower()
+                                        if (description == 'armory'):
+                                            door['Locked'] = 'n'                                    
                                     return
                             print (item['Description'], "\n")
                             print ("You need a certain key to open it.\n")
@@ -151,6 +154,13 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'guard'):
+                        print ("You stare lovingly at the guard.\n")
+                        print (item['Description'], "\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     elif (noun == 'desk'):
                         if (item['HiddenItem'] == 'glue'):
                             item['HiddenItem'] = 'none'
@@ -240,6 +250,12 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'guard'):
+                        print ("You start whacking the guard.\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     else:
                         print ("I don't think you want to hit that.")
                         return
@@ -273,6 +289,13 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'guard'):
+                        print ("You give the guard a wedgie.\n")
+                        print (item['Description'], "\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     else:
                         print ("I don't think you want to pull that.")
                         return
@@ -304,10 +327,26 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'guard'):
+                        print ("You have a cat fight with the guard.\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     else:
                         print ("I don't think you want to scratch that.")
                         return
         elif (verb == 'break'):
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'guard'):
+                        print ("You break the guard's nose. He is not happy.\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
             print ("I don't think you want to break that.")
         elif (verb == 'push'):
             for item in self.objectList:
@@ -328,6 +367,12 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'guard'):
+                        print ("You push the guard down. He does not like that too much.\n")
+                        print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     else:
                         print ("I don't think you want to push that.")
         elif (verb == 'drink'):
@@ -486,19 +531,7 @@ class gameState:
         #print ("Current room: \n")
         #print (self.currentRoom)
         print ("********************End of Test Function***********************")
-        
-    def quitGame(self):
-        save = 'z'
 
-        while (save != 'y' and save != 'n'):
-            save = input("Would you like to save your game? (y or n) > ")
-            if (save == 'y'):
-                self.saveGame()
-                return
-            elif (save == 'n'):
-                return
-            else:
-                print ("Not a valid input, next time try again.\n")
 
     def gameOver(self):
         for item in self.objectList:
