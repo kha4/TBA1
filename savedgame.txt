@@ -1,17 +1,17 @@
-Prison Cell
+Cell Block A
 *
 visited
 not visited
 not visited
 not visited
 not visited
+visited
 not visited
 not visited
 not visited
 not visited
 not visited
-not visited
-not visited
+visited
 not visited
 not visited
 
@@ -24,13 +24,14 @@ Prison Cell
 Cell House Roof
 Cell House Roof
 Cell House Roof
-Cell House Roof
+inventory
 Cell Block A
 Cell Block A
 Mess Hall
 Sally Port
 Armory
 Visitation Room
+Guardhouse
 Mess Hall
 Mess Hall
 Kitchen
@@ -50,6 +51,8 @@ Warden Office
 Warden Office
 Warden Office
 Warden Office
+Warden Office
+Recreation Yard
 Recreation Yard
 Yard
 Yard
@@ -58,16 +61,17 @@ Dock
 Dock
 Boat
 Boat
+Boat
 *
-y
-n
-y
 n
 n
 n
-y
 n
-y
+n
+n
+n
+n
+n
 n
 y
 n
@@ -88,3 +92,4 @@ n
 n
 n
 *
+key

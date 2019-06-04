@@ -69,7 +69,7 @@ def createObjectList(newGame):
 	bookShelves = {'Name': 'book shelves', 'Description': 'The book shelves are filled with old, dusty books. Nothing looks interesting here.', 'Location': 'Library', 'Movable': 'n'}
 	newGame.addObject(bookShelves)
 
-	desk = {'Name': 'desk', 'Description': 'You found glue.', 'Shortdesc': ' Looks like an ordinary desk. There are books scattered around. Someone was reading \"Rafts for Dummies\". Looks intriguing.', 'Location': 'Library', 'Movable': 'n', 'HiddenItem': 'Glue'}
+	desk = {'Name': 'desk', 'Description': 'You found glue.', 'ShortDesc': ' Looks like an ordinary desk. There are books scattered around. Someone was reading \"Rafts for Dummies\". Looks intriguing.', 'Location': 'Library', 'Movable': 'n', 'HiddenItem': 'Glue'}
 	newGame.addObject(desk)
 
 	bookCart = {'Name': 'book cart', 'Description': 'The wheel is broken. It has not been used in months.', 'Location': 'Library', 'Movable': 'n'}

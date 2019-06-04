@@ -613,15 +613,15 @@ class gameState:
         winningNum = 0
 
         for item in self.playerInventory:
-            if (item['Name'] == 'raincoats'):
+            if (item == 'raincoats'):
                 winningNum =+ 1
-            if (item['Name'] == 'gum'):
+            if (item == 'gum'):
                 winningNum =+ 1
-            if (item['Name'] == 'glue'):
+            if (item == 'glue'):
                 winningNum =+ 1
-            if (item['Name'] == 'rope'):
+            if (item == 'rope'):
                 winningNum =+ 1
-            if (item['Name'] == 'scissors'):
+            if (item == 'scissors'):
                 winningNum =+ 1
             if (self.currentRoom == 'dock'):
                 winningNum =+ 1
