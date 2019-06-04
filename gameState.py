@@ -33,11 +33,17 @@ class gameState:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
-                    if (noun == 'air vent'):
+                    if (noun == 'air vent' and self.currentRoom == "Prison Cell"):
                         print ("You open ", item['Name'], "and inspect.")
                         print (item['Description'], "\n")
                         print ("You are entering...Cell House Roof.\n")
                         self.currentRoom = "Cell House Roof"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'air vent' and self.currentRoom == "Cell House Roof"):
+                        print (item['Description'], "\n")
+                        print ("You are returning to...Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
                         self.printRoomDescription()
                         return
                     elif (noun == 'pantry'):
@@ -110,13 +116,13 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
-                    elif (noun == 'air vent'):
+                    elif (noun == 'air vent' and self.currentRoom == "Prison Cell"):
                         print (item['Description'], "\n")
                         print ("You are entering...Cell House Roof.\n")
                         self.currentRoom = "Cell House Roof"
                         self.printRoomDescription()
                         return
-                    elif (noun == 'sky lights'):
+                    elif (noun == 'air vent' and self.currentRoom == "Cell House Roof"):
                         print (item['Description'], "\n")
                         print ("You are returning to...Prison Cell.\n")
                         self.currentRoom = "Prison Cell"
@@ -241,11 +247,17 @@ class gameState:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
-                    if (noun == 'air vent'):
+                    if (noun == 'air vent' and self.currentRoom == "Prison Cell"):
                         print ("You pull open the air vent.\n")
                         print (item['Description'], "\n")
                         print ("You are entering...Cell House Roof.\n")
                         self.currentRoom = "Cell House Roof"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'air vent' and self.currentRoom == "Cell House Roof"):
+                        print (item['Description'], "\n")
+                        print ("You are returning to...Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
                         self.printRoomDescription()
                         return
                     elif (noun == 'coat rack'):
@@ -306,9 +318,10 @@ class gameState:
                             item['HiddenItem'] == 'none'
                             print (item['Description'], "\n")
                             print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
-                            self.passageList[CBAtoMH]['Locked'] = 'n'
-                            self.passageList[CBAtoL]['Locked'] = 'n'
-                            self.passageList[CBAtoSP]['Locked'] = 'n'
+                            for door in self.passageList:
+                                description = door['Description'].lower()
+                                if(door['Description'] == 'Mess Hall' or door['Description'] == 'Library' or door['Description'] == 'Sally Port'):
+                                    door['Locked'] = 'n'
                             return
                         else:
                             print (item['Name'], ": ")

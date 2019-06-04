@@ -21,6 +21,9 @@ def createObjectList(newGame):
 	airVent = {'Name': 'air vent', 'Description': 'Seems like there is room for a small person to fit in the air vent.', 'Location': 'Prison Cell', 'Movable': 'n'}
 	newGame.addObject(airVent)
 
+	airVentB = {'Name': 'air vent', 'Description': 'Back into the air vent we go.', 'Location': 'Cell House Roof', 'Movable': 'n'}
+	newGame.addObject(airVentB)
+
 	drainPipes = {'Name': 'drain pipes', 'Description': 'You found a key.', 'ShortDesc': 'It seems moist and moldy. Nothing interesting here.', 'Location': 'Cell House Roof', 'Movable': 'n', 'HiddenItem': 'Key'}
 	newGame.addObject(drainPipes)
 
