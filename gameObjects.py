@@ -51,6 +51,9 @@ def createObjectList(newGame):
 	guardE = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Visitation Room', 'Movable': 'n'}
 	newGame.addObject(guardE)
 
+	guardF = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Guardhouse', 'Movable': 'n'}
+	newGame.addObject(guardF)
+
 	tables = {'Name': 'tables', 'Description': 'You found gum.', 'ShortDesc': 'There is gum and signs of leftover food stained on these tables.', 'Location': 'Mess Hall', 'Movable': 'n', 'HiddenItem': 'gum'}
 	newGame.addObject(tables)
 
@@ -75,7 +78,7 @@ def createObjectList(newGame):
 	glue = {'Name': 'glue', 'Description': 'Seems like very durable glue. You should probably not glue your fingers together.', 'Location': 'Library', 'Movable': 'y'}
 	newGame.addObject(glue)
 
-	doorLockControlPanel = {'Name': 'door lock control panel', 'Description': 'Looks like it opens the door to the Armory.', 'ShortDesc': 'The door lock control panel has already been used. Door to the Armory is open.', 'Location': 'Sally Port', 'Movable': 'n', 'HiddenItem': 'locked'}
+	doorLockControlPanel = {'Name': 'door lock control panel', 'Description': 'Looks like it opens the door to the Armory.', 'ShortDesc': 'The door lock control panel has already been used. Door to the Armory is open.', 'Location': 'Sally Port', 'Movable': 'n', 'HiddenItem': 'locked', 'KeyToOpen': 'warden key'}
 	newGame.addObject(doorLockControlPanel)
 
 	metalDetector = {'Name': 'metal detector', 'Description': 'Seems to be out of order.', 'Location': 'Sally Port', 'Movable': 'n'}
@@ -99,37 +102,44 @@ def createObjectList(newGame):
 	wardenDesk = {'Name': 'warden desk', 'Description': 'Looks like a messy desk. The warden is a slob.', 'Location': 'Warden Office', 'Movable': 'n'}
 	newGame.addObject(wardenDesk)
 
-	warden = {'Name': 'warden', 'Description': 'The warden seems to be sleeping. Better not wake him up', 'Location': 'Warden Office', 'Movable': 'n'}
+	warden = {'Name': 'warden', 'Description': 'You found the warden key. Looks useful.', 'ShortDesc': 'The warden seems to be sleeping. Better not wake him up', 'Location': 'Warden Office', 'Movable': 'n', 'HiddenItem': 'warden key'}
 	newGame.addObject(warden)
+
+	wardenKey = {'Name': 'warden key', 'Description': 'Looks like an important key. Wonder what it opens.', 'Location': 'Warden Office', 'Movable': 'y'}
+	newGame.addObject(wardenKey)
 
 	bookshelf = {'Name': 'bookshelf', 'Description': 'Just an ordinary bookshelf. Nothing to see here.', 'Location': 'Warden Office', 'Movable': 'n'}
 	newGame.addObject(bookshelf)
 
-	birdCage = {'Name': 'bird cage', 'Description': 'The bird is lying on the ground of the bird cage not moving. Poor bird.', 'Location': 'Warden Office', 'Movable': 'n'}
+	birdCage = {'Name': 'bird cage', 'Description': 'The bird inside is all skin and bones. Poor bird.', 'Location': 'Warden Office', 'Movable': 'n'}
 	newGame.addObject(birdCage)
 
 	walls = {'Name': 'walls', 'Description': 'These tall brick walls keeps prisoners inside.', 'Location': 'Recreation Yard', 'Movable': 'n'}
 	newGame.addObject(walls)
 
-	horseshoePit = {'Name': 'Horseshoe Pit', 'Description': 'Seems like a fun way to spend time.', 'Location': 'Recreation Yard', 'Movable': 'n'}
+	horseshoePit = {'Name': 'horseshoe pit', 'Description': 'Seems like a fun way to spend time.', 'Location': 'Recreation Yard', 'Movable': 'n'}
+	newGame.addObject(horseshoePit)
 
-	fence = {'Name': 'Fence', 'Description': 'This barbed wire fence is keeping prisoners inside of the yard. Does not seem too high though. You can see the shore from here.', 'Location': 'Yard', 'Movable': 'n'}
+	fence = {'Name': 'fence', 'Description': 'This barbed wire fence is keeping prisoners inside of the yard. Does not seem too high though. You can see the shore from here.', 'Location': 'Yard', 'Movable': 'n'}
 	newGame.addObject(fence)
 
-	guardTower = {'Name': 'Guard Tower', 'Description': 'The guard tower seems to be impregnable. Looks like no one is home.', 'Location': 'Yard', 'Movable': 'n'}
+	guardTower = {'Name': 'guard tower', 'Description': 'The guard tower seems to be impregnable. Looks like no one is home.', 'Location': 'Yard', 'Movable': 'n'}
 	newGame.addObject(guardTower)
 
-	spotlight = {'Name': 'Spotlight', 'Description': 'What a large light. It is probably used to spot prisoners.', 'Location': 'Guardhouse', 'Movable': 'n'}
+	spotlight = {'Name': 'Spotlight', 'Description': 'What a large light. It is probably used to spot prisoners. Does not seem to be working though.', 'Location': 'Guardhouse', 'Movable': 'n'}
 	newGame.addObject(spotlight)
 
-	dockDesk = {'Name': 'Desk', 'Description': 'Seems like an ordinary desk. Nothing much going on here.', 'Location': 'Dock', 'Movable': 'n'}
+	dockDesk = {'Name': ' dock desk', 'Description': 'Seems like an ordinary desk. Nothing much going on here.', 'Location': 'Dock', 'Movable': 'n'}
 	newGame.addObject(dockDesk)
 
-	lockers = {'Name': 'Lockers', 'Description': 'Looks like some of these lockers are being used. Maybe something useful is inside of them.', 'Location': 'Dock', 'Movable': 'n'}
+	lockers = {'Name': 'lockers', 'Description': 'Looks like some of these lockers are being used. Maybe something useful is inside of them.', 'Location': 'Dock', 'Movable': 'n'}
 	newGame.addObject(lockers)
 
-	storageChest = {'Name': 'Storage Chest', 'Description': 'Looks like something interesting could be inside.', 'Location': 'Boat', 'Movable': 'n'}
+	storageChest = {'Name': 'storage chest', 'Description': 'You found scissors.', 'ShortDesc': 'Looks empty now. Everything has been taken.', 'Location': 'Boat', 'Movable': 'n', 'HiddenItem': 'scissors'}
 	newGame.addObject(storageChest)
 
-	boatControls = {'Name': 'Boat Controls', 'Description': 'Does not seem to work. Must be malfunctioning.', 'Location': 'Boat', 'Movable': 'n'}
+	scissors = {'Name': 'scissors', 'Description': 'The scissors look extremely dull but still could be useful.', 'Location': 'Boat', 'Movable': 'n'}
+	newGame.addObject(scissors)
+
+	boatControls = {'Name': 'boat controls', 'Description': 'Does not seem to work. Must be malfunctioning.', 'Location': 'Boat', 'Movable': 'n'}
 	newGame.addObject(boatControls)

@@ -46,6 +46,13 @@ class gameState:
                         self.currentRoom = "Prison Cell"
                         self.printRoomDescription()
                         return
+                    elif (noun == 'bird cage'):
+                        print ("You open the bird cage. The bird gets scared and sqawks loudly.\n")
+                        print ("The warden wakes up!\n")
+                        print ("The warden take you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     elif (noun == 'pantry'):
                         print ("You open the ", item['Name'], "and inspect.")
                         print (item['Description'], "\n")
@@ -77,6 +84,13 @@ class gameState:
                             print ("The glue has been added to your inventory.\n")
                             self.addInventory("glue")
                             return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'storage chest'):
+                        if (item['HiddenItem'] == 'scissors'):
+                            print ("Unable to open storage chest. Try something else.\n")
                         else:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
@@ -115,6 +129,24 @@ class gameState:
                             print ("The key has been added to your inventory.")
                             self.addInventory("key")
                             return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'warden'):
+                        if (item['HiddenItem'] == 'warden key'):
+                            item['HiddenItem'] == 'none'
+                            print (item['Description'], "\n")
+                            print ("The warden key has been added to your inventory.")
+                            self.addInventory("warden key")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    elif (noun == 'storage chest'):
+                        if (item['HiddenItem'] == 'scissors'):
+                            print ("Looks like the storage chest can be opened somehow.\n")
                         else:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
@@ -189,7 +221,7 @@ class gameState:
                         return
         elif (verb == 'help'):
             print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
-            print ("open, take, go, look, look at, savegame, loadgame, help, inventory.")
+            print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
             return
         elif (verb == 'inventory'):
             self.displayInventory()
@@ -253,6 +285,20 @@ class gameState:
                     elif (noun == 'guard'):
                         print ("You start whacking the guard.\n")
                         print ("The guard takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'warden'):
+                        print ("You hit the warden while he sleeps.\n")
+                        print ("The warden wakes up!\n")
+                        print ("The warden takes you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'bird cage'):
+                        print ("You hit the bird cage. The bird gets scared and sqawks loudly.\n")
+                        print ("The warden wakes up!\n")
+                        print ("The warden take you back to the Prison Cell.\n")
                         self.currentRoom = "Prison Cell"
                         self.printRoomDescription()
                         return
@@ -347,7 +393,26 @@ class gameState:
                         self.currentRoom = "Prison Cell"
                         self.printRoomDescription()
                         return
-            print ("I don't think you want to break that.")
+                    elif (noun == 'bird cage'):
+                        print ("You break open the bird cage. The bird gets scared and sqawks loudly.\n")
+                        print ("The warden wakes up!\n")
+                        print ("The warden take you back to the Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
+                    elif (noun == 'storage chest'):
+                        if (item['HiddenItem'] == 'scissors'):
+                            print ("You break open the storage chest.\n")
+                            print (item['Description'], "\n")
+                            print ("The scissors has been added to your inventory.\n")
+                            self.addInventory("scissors")
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
+                    else:
+                        print ("I don't think you want to break that.")
+                        return
         elif (verb == 'push'):
             for item in self.objectList:
                 tmpItem = item['Name']
@@ -531,19 +596,7 @@ class gameState:
         #print ("Current room: \n")
         #print (self.currentRoom)
         print ("********************End of Test Function***********************")
-        
-    def quitGame(self):
-        save = 'z'
 
-        while (save != 'y' and save != 'n'):
-            save = input("Would you like to save your game? (y or n) > ")
-            if (save == 'y'):
-                self.saveGame()
-                return
-            elif (save == 'n'):
-                return
-            else:
-                print ("Not a valid input, next time try again.\n")
 
     def gameOver(self):
         for item in self.objectList:
