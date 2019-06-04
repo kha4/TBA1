@@ -56,13 +56,13 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                         for i in dirRooms:
                             if words[idx+1] == i:
                                 return i
+                        for i in range(len(words) - 1, -1, -1):
+                            if words[i] == "go":
+                                del words[i]
+                        newWords = ' '.join(map(str, words))
                         for i in adjRooms:
-                            for i in range(len(words) - 1, -1, -1):
-                                if words[i] == "go":
-                                    del words[i]
-                            newWords = ' '.join(map(str, words))
-                            if [newWords] == adjRooms:
-                                return adjRooms
+                            if newWords == i:
+                                return i
                         print (newWords,"is not a valid direction you can go in.")
                         print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
                         return 0
@@ -237,11 +237,12 @@ def parse(newGame):
             print ("\nVerb:", actionNoun[0])
             print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
-    if actionNoun[0] == adjRooms:
-        str2 = ''.join(actionNoun[0])
-        print ("\nVerb:", "go")
-        print ("User Noun:", str2)
-        return "go", str2
+    for x in adjRooms:
+        if x == actionNoun[0]:
+            str2 = ''.join(actionNoun[0])
+            print ("\nVerb:", "go")
+            print ("User Noun:", str2)
+            return "go", str2
     for x in dirRooms:
         if x == actionNoun[0]:
             str1 = ''.join(actionNoun[0])
