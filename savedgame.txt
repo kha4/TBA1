@@ -1,19 +1,19 @@
-Cell Block A
+Warden Office
 *
 visited
+visited
 not visited
-not visited
-not visited
-not visited
+visited
+visited
+visited
+visited
 visited
 not visited
 not visited
-not visited
-not visited
-not visited
+visited
 visited
 not visited
-not visited
+visited
 
 *
 Prison Cell
@@ -33,20 +33,20 @@ Armory
 Visitation Room
 Guardhouse
 Mess Hall
-Mess Hall
+inventory
 Kitchen
 Kitchen
 Library
 Library
 Library
-Library
+inventory
 Sally Port
 Sally Port
 Armory
 Armory
 Visiting Room
 Visiting Room
-Visiting Room
+inventory
 Warden Office
 Warden Office
 Warden Office
@@ -92,4 +92,4 @@ n
 n
 n
 *
-key
+keygluegumraincoats
