@@ -127,9 +127,10 @@ class gameState:
                             item['HiddenItem'] == 'none'
                             print (item['Description'], "\n")
                             print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
-                            self.passageList[CBAtoMH]['Locked'] = 'n'
-                            self.passageList[CBAtoL]['Locked'] = 'n'
-                            self.passageList[CBAtoSP]['Locked'] = 'n'
+                            for door in self.passageList:
+                                description = door['Description'].lower()
+                                if(door['Description'] == 'Mess Hall' or door['Description'] == 'Library' or door['Description'] == 'Sally Port'):
+                                    door['Locked'] = 'n'
                             return
                         else:
                             print (item['Name'], ": ")
