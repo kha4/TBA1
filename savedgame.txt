@@ -1,4 +1,4 @@
-Warden Office
+Sally Port
 *
 visited
 visited
@@ -49,7 +49,7 @@ Visiting Room
 inventory
 Warden Office
 Warden Office
-Warden Office
+inventory
 Warden Office
 Warden Office
 Recreation Yard
@@ -92,4 +92,8 @@ n
 n
 n
 *
-keygluegumraincoats
+key
+glue
+gum
+raincoats
+warden key
