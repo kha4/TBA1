@@ -42,7 +42,10 @@ def main():
 
     while (newGame.gameOver() == 0 and verb != 'quit'):
         verb, noun = textParser.parse(newGame)
-        newGame.modifyState(verb, noun)
+        if (verb == 'quit'):
+            newGame.quitGame()
+        else:
+            newGame.modifyState(verb, noun)
 
 
 if __name__ == "__main__":

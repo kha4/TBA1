@@ -324,16 +324,6 @@ class gameState:
             self.loadSavedGame()
             self.printRoomDescription()
             return
-        elif (verb == 'quit'):
-            save = input("Would you like to save your game? (y or n) > ")
-            if (save == 'y'):
-                self.saveGame()
-                return
-            elif (save == 'n'):
-                return
-            else:
-                print ("Not a valid input, next time try just y or n\n")
-                print ("Quit game aborted\n")
     #hit', 'pull', 'eat', 'scratch', 'break', 'push', 'drink',  
 
     def setRoomStatus(self, roomName):
@@ -482,6 +472,18 @@ class gameState:
         #print (self.currentRoom)
         print ("********************End of Test Function***********************")
 
+    def quitGame(self):
+        save = 'z'
+
+        while (save != 'y' and save != 'n'):
+            save = input("Would you like to save your game? (y or n) > ")
+            if (save == 'y'):
+                self.saveGame()
+                return
+            elif (save == 'n'):
+                return
+            else:
+                print ("Not a valid input, next time try again.\n")
 
     def gameOver(self):
         for item in self.objectList:
