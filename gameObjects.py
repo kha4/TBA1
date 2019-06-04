@@ -39,6 +39,18 @@ def createObjectList(newGame):
 	guard = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Cell Block A', 'Movable': 'n'}
 	newGame.addObject(guard)
 
+	guardB = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Mess Hall', 'Movable': 'n'}
+	newGame.addObject(guardB)
+
+	guardC = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Sally Port', 'Movable': 'n'}
+	newGame.addObject(guardC)
+
+	guardD = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Armory', 'Movable': 'n'}
+	newGame.addObject(guardD)
+
+	guardE = {'Name': 'guard', 'Description': 'The guard is onto you!', 'Location': 'Visitation Room', 'Movable': 'n'}
+	newGame.addObject(guardE)
+
 	tables = {'Name': 'tables', 'Description': 'You found gum.', 'ShortDesc': 'There is gum and signs of leftover food stained on these tables.', 'Location': 'Mess Hall', 'Movable': 'n', 'HiddenItem': 'gum'}
 	newGame.addObject(tables)
 
