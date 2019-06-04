@@ -199,6 +199,13 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                                         break
                             #if we understand the verb but not the noun
                             if understandFlag == 2:
+                                del words[idx]
+                                newWords = ' '.join(map(str, words))
+                                print (newWords)
+                                for i in gameNouns:
+                                    if newWords == i:
+                                            userNoun = i
+                                            return alias, userNoun
                                 print ("You did not provide an item that is available for your action. Please enter the phrase again with an item.\n")
             #if we don't understand the verb
             if understandFlag == 0:
