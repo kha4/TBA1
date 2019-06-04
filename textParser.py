@@ -70,13 +70,14 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                         print ("Which way would you like to go? Refer to the room description to find the exits.\n")
                         return 0
 
-                if [x] == dirRooms:
-                    try:
-                        words[idx+1]
-                        print ("To go a direction try: \"go north\" or just \"north\".")
-                        return 0
-                    except:
-                        return dirRooms
+                for x in dirRooms:
+                    if words[idx] == x:
+                        try:
+                            words[idx+1]
+                            print ("To go a direction try: \"go north\" or just \"north\".")
+                            return 0
+                        except:
+                            return x
 
                 if x == "south" or x == "north" or x == "east" or x == "west":
                     print (x,"is not a valid direction you can go in.")
