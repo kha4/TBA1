@@ -611,9 +611,24 @@ class gameState:
                     print ("Not a valid input, next time try again.\n")
 
     def gameOver(self):
-        for item in self.objectList:
-            if (item['Name'] == 'Key'):
-                if (item['Location'] == 'Cell Block' and self.currentRoom == 'Cell Block'):
-                    print("Demo Over")
-                    return 1
+        winningNum = 0
+
+        for item in self.playerInventory:
+            if (item['Name'] == 'raincoats'):
+                winningNum =+ 1
+            if (item['Name'] == 'gum'):
+                winningNum =+ 1
+            if (item['Name'] == 'glue'):
+                winningNum =+ 1
+            if (item['Name'] == 'rope'):
+                winningNum =+ 1
+            if (item['Name'] == 'scissors'):
+                winningNum =+ 1
+            if (self.currentRoom == 'dock'):
+                winningNum =+ 1
+
+        if (winningNum > 6):
+            print("Using the inventory you collected, you contruct a floatation devise")
+            print("To allow you to escape from the island. Congradulations!")
+            return 1
         return 0
