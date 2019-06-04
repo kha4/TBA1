@@ -116,6 +116,12 @@ class gameState:
                         self.currentRoom = "Cell House Roof"
                         self.printRoomDescription()
                         return
+                    elif (noun == 'sky lights'):
+                        print (item['Description'], "\n")
+                        print ("You are returning to...Prison Cell.\n")
+                        self.currentRoom = "Prison Cell"
+                        self.printRoomDescription()
+                        return
                     elif (noun == 'locking mechanism'):
                         if (item['HiddenItem'] == 'locked'):
                             item['HiddenItem'] == 'none'
