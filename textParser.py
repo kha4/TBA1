@@ -21,7 +21,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
 
     for idx, x in enumerate(words):
         #looking for a spcial verb
-        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame']
+        specialVerbs = ['look', 'go', 'help', 'inventory', 'north', 'south', 'west', 'east', 'savegame', 'loadgame', 'quit']
         for y in specialVerbs:
             if x == y:
                 #checking if there is a valid noun to look at or just using look
@@ -84,7 +84,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                     print ("The available exits are:", adjRooms, "or the direction", dirRooms, ".\n")
                     return 0                    
 
-                if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame":
+                if x == "help" or x == "inventory" or x == "savegame" or x == "loadgame" or x == "quit":
                     try:
                         words[idx+1]
                         print ("To use the command", x, "just type:", x, "\n")
@@ -232,7 +232,7 @@ def parse(newGame):
     print ("Directions pulled in are: ", dirRooms)
 
     actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns)
-    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory']
+    finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory', 'quit']
     for x in finalActions:
         if actionNoun[0] == x:
             print ("\nVerb:", actionNoun[0])
