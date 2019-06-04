@@ -448,8 +448,7 @@ class gameState:
         elif (verb == 'loadgame'):
             self.loadSavedGame()
             self.printRoomDescription()
-            return
-    #hit', 'pull', 'eat', 'scratch', 'break', 'push', 'drink',  
+            return  
 
     def setRoomStatus(self, roomName):
         for item in self.roomList:
