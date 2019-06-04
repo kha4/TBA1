@@ -193,12 +193,13 @@ class gameState:
         elif (verb == 'go'):
             for item in self.passageList:
                 description = item['Description'].lower()
-                if (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'n'):
+                direction = item['Direction'].lower()
+                if (item['Location'] == self.currentRoom and direction == noun and item['Locked'] == 'n'):
                     print ("You are entering...\n")
                     self.currentRoom = item['Description']
                     self.printRoomDescription()
                     return
-                elif (item['Location'] == self.currentRoom and item['Direction'] == noun and item['Locked'] == 'y'):
+                elif (item['Location'] == self.currentRoom and direction == noun and item['Locked'] == 'y'):
                     for keyItem in self.playerInventory:
                         if (item['KeytoOpen'] == keyItem):
                             print ("You use the key to unlock the door.\n")

@@ -1,17 +1,17 @@
-Prison Cell
+Cell Block A
 *
 visited
 not visited
 not visited
 not visited
 not visited
+visited
 not visited
 not visited
 not visited
 not visited
 not visited
-not visited
-not visited
+visited
 not visited
 not visited
 
@@ -24,6 +24,7 @@ Prison Cell
 Cell House Roof
 Cell House Roof
 Cell House Roof
+inventory
 Cell Block A
 Cell Block A
 Mess Hall
@@ -54,15 +55,15 @@ Dock
 Boat
 Boat
 *
-y
-n
-y
 n
 n
 n
-y
 n
-y
+n
+n
+n
+n
+n
 n
 y
 n
@@ -83,3 +84,4 @@ n
 n
 n
 *
+key
