@@ -39,7 +39,7 @@ def main():
     #Call for testing
     #newGame.testSuite()
 
-    while (newGame.gameOver() == 0):
+    while (newGame.gameOver() == 0 and verb != 'quit'):
         verb, noun = textParser.parse(newGame)
         newGame.modifyState(verb, noun)
 
