@@ -3,7 +3,6 @@ import sys
 import gameEngine
 import gameState
 
-
 #returns the alias for the verb entered by the player
 def findAlias(x):
     actionsGrid = [['hit', 'punch', 'swing', 'collide', 'bat', 'strike', 'bump', 'slap', 'smack', 'knock'], ['pull', 'drag', 'haul', 'yank'], ['eat', 'consume', 'swallow', 'chew', 'devour', 'feed', 'ingest', 'nibble'],
@@ -56,7 +55,7 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                         words[idx+1]
                         for i in dirRooms:
                             if words[idx+1] == i:
-                                return dirRooms
+                                return i
                         for i in adjRooms:
                             for i in range(len(words) - 1, -1, -1):
                                 if words[i] == "go":
@@ -243,11 +242,12 @@ def parse(newGame):
         print ("\nVerb:", "go")
         print ("User Noun:", str2)
         return "go", str2
-    if actionNoun[0] == dirRooms:
-        str1 = ''.join(actionNoun[0])
-        print ("\nVerb:", "go")
-        print ("User Noun:", str1)
-        return "go", str1
+    for x in dirRooms:
+        if x == actionNoun[0]:
+            str1 = ''.join(actionNoun[0])
+            print ("\nVerb:", "go")
+            print ("User Noun:", str1)
+            return "go", str1
 
 
 # def printRoomDescription(self):
