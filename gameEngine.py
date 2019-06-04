@@ -10,7 +10,12 @@ from os import system, name
 
 def main():
 
+    menuSelection = 0
+
     menuSelection = mainMenu.display()
+    while (menuSelection != '1' and menuSelection != "2" and menuSelection != "3"):
+        print ("Try again, enter 1, 2, or 3.")
+        menuSelection  = input("> ")
 
     if (menuSelection == "1"):
         newGame = gameState.gameState()
