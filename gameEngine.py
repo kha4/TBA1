@@ -14,10 +14,15 @@ import textParser
 import gameObjects
 import passages
 import sys
+import os
 from os import system, name
 
 def main():
 
+    rows, columns = os.popen('stty size', 'r').read().split()
+    if int(columns) < 172:
+        print ("Please increase your column size to at least 176")
+        exit()
     menuSelection = 0
     # Main menu display is called
     menuSelection = mainMenu.display()

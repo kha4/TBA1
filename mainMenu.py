@@ -13,6 +13,7 @@ from os import system, name
 def printRed(skk): print("\033[91m {}\033[00m".format(skk))
 
 def display():
+
     #Sets the console window size
     os.system("mode con cols=170 lines=50")
     
