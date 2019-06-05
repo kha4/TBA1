@@ -226,7 +226,7 @@ class gameState:
                         return
         elif (verb == 'help'): # This verb provides the player with suggested verbs to use
             print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
-            print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
+            print ("open, take, look, look at, savegame, loadgame, help, inventory.")
             return
         elif (verb == 'inventory'): # This verb diplays the players current inventory
             self.displayInventory()

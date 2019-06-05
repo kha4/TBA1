@@ -82,7 +82,6 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
                         except:
                             return l
 
-                print ("X is", x)
                 if x == "south" or x == "north" or x == "east" or x == "west":
                     print (x,"is not a valid direction you can go in.")
                     print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
@@ -106,12 +105,10 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
         for i in catRooms:
             if x == i:
                 newWords = ' '.join(map(str, words))
-                print(newWords)
                 for p in adjRooms:
-                    print(p)
                     if newWords == p:
                         return p
-                        
+
                 print (newWords,"is not a valid direction you can go in.")
                 print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
                 return 0
@@ -203,7 +200,6 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                             if understandFlag == 2:
                                 del words[idx]
                                 newWords = ' '.join(map(str, words))
-                                print (newWords)
                                 for i in gameNouns:
                                     if newWords == i:
                                             userNoun = i

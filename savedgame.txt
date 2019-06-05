@@ -65,13 +65,13 @@ Boat
 *
 n
 n
-y
 n
 n
 n
-y
 n
-y
+n
+n
+n
 n
 y
 n
