@@ -624,8 +624,6 @@ class gameState:
                 winningNum += 1
             if (item == 'scissors'):
                 winningNum += 1
-            #if (self.currentRoom == 'Dock'):
-                #winningNum += 1
 
         if (winningNum == 5 and self.currentRoom == 'Dock'):
             print("Using the inventory you collected, you contruct a floatation devise")
