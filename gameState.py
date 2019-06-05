@@ -615,19 +615,19 @@ class gameState:
 
         for item in self.playerInventory:
             if (item == 'raincoats'):
-                winningNum =+ 1
+                winningNum += 1
             if (item == 'gum'):
-                winningNum =+ 1
+                winningNum += 1
             if (item == 'glue'):
-                winningNum =+ 1
+                winningNum += 1
             if (item == 'rope'):
-                winningNum =+ 1
+                winningNum += 1
             if (item == 'scissors'):
-                winningNum =+ 1
-            if (self.currentRoom == 'dock'):
-                winningNum =+ 1
+                winningNum += 1
+            #if (self.currentRoom == 'Dock'):
+                #winningNum += 1
 
-        if (winningNum == 6):
+        if (winningNum == 5 and self.currentRoom == 'Dock'):
             print("Using the inventory you collected, you contruct a floatation devise")
             print("To allow you to escape from the island. Congradulations!")
             return 1

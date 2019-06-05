@@ -1,18 +1,18 @@
-Sally Port
+Boat
 *
 visited
 visited
-not visited
 visited
 visited
 visited
 visited
 visited
-not visited
-not visited
 visited
 visited
-not visited
+visited
+visited
+visited
+visited
 visited
 
 *
@@ -43,7 +43,7 @@ inventory
 Sally Port
 Sally Port
 Armory
-Armory
+inventory
 Visiting Room
 Visiting Room
 inventory
@@ -60,7 +60,7 @@ Guardhouse
 Dock
 Dock
 Boat
-Boat
+inventory
 Boat
 *
 n
@@ -73,7 +73,7 @@ n
 n
 n
 n
-y
+n
 n
 n
 n
@@ -97,3 +97,5 @@ glue
 gum
 raincoats
 warden key
+rope
+scissors
