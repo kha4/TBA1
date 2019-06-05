@@ -1,11 +1,14 @@
+################################################################################
+## TBA1 - Melissa Barr/ Kevin Ha / Christopher Perry                          ##
+## CS 467 - Capstone - June 4, 2019                                           ##
+## The gameState class keep track of the differnet different variables within ##
+## the game that are constantly changing as the game progresses.              ##
+################################################################################
+
 import roomParser
 from roomParser import parseNewRoomData
 import os
 
-##########################################################################################
-## The gameState class keep track of the differnet different variables within the game  ##
-## that are constantly changing as the game progresses.                                 ##
-##########################################################################################
 class gameState:
 
     def __init__(self):

@@ -1,3 +1,9 @@
+################################################################################
+## TBA1 - Melissa Barr/ Kevin Ha / Christopher Perry                          ##
+## CS 467 - Capstone - June 4, 2019                                           ##
+## The file contains the displays the main menu and accompanying graphic      ##
+################################################################################
+
 from time import sleep
 import os
 import sys

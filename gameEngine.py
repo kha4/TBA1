@@ -1,3 +1,11 @@
+################################################################################
+## TBA1 - Melissa Barr/ Kevin Ha / Christopher Perry                          ##
+## CS 467 - Capstone - June 4, 2019                                           ##
+## This file contains the main function, starts the game, and initiates the   ##
+## a game instance.                                                           ##
+################################################################################
+
+
 from time import sleep
 import mainMenu
 import gameState
