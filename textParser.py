@@ -106,13 +106,15 @@ def helpVerbs(words, newGame, gameNouns, adjRooms, dirRooms):
         for i in catRooms:
             if x == i:
                 newWords = ' '.join(map(str, words))
+                print(newWords)
                 for p in adjRooms:
+                    print(p)
                     if newWords == p:
                         return p
-                    else:
-                        print (newWords,"is not a valid direction you can go in.")
-                        print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
-                        return 0
+                        
+                print (newWords,"is not a valid direction you can go in.")
+                print ("The available exits are:", adjRooms, "or the directions", dirRooms, ".\n")
+                return 0
                             
     return 1
 

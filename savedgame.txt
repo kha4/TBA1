@@ -1,19 +1,19 @@
-Boat
+Cell Block A
 *
 visited
+not visited
+not visited
+not visited
+not visited
 visited
+not visited
+not visited
+not visited
+not visited
+not visited
 visited
-visited
-visited
-visited
-visited
-visited
-visited
-visited
-visited
-visited
-visited
-visited
+not visited
+not visited
 
 *
 Prison Cell
@@ -33,23 +33,23 @@ Armory
 Visitation Room
 Guardhouse
 Mess Hall
-inventory
+Mess Hall
 Kitchen
 Kitchen
 Library
 Library
 Library
-inventory
+Library
 Sally Port
 Sally Port
 Armory
-inventory
+Armory
 Visiting Room
 Visiting Room
-inventory
+Visiting Room
 Warden Office
 Warden Office
-inventory
+Warden Office
 Warden Office
 Warden Office
 Recreation Yard
@@ -60,20 +60,20 @@ Guardhouse
 Dock
 Dock
 Boat
-inventory
+Boat
 Boat
 *
 n
 n
+y
 n
 n
 n
+y
 n
+y
 n
-n
-n
-n
-n
+y
 n
 n
 n
@@ -93,9 +93,3 @@ n
 n
 *
 key
-glue
-gum
-raincoats
-warden key
-rope
-scissors
