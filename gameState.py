@@ -569,8 +569,9 @@ class gameState:
         for item in self.playerInventory:
             fo.write(item + '\n')
 
-
         fo.close()
+
+        print("Game saved!")
 
     def createRoom(self, roomDict):
         self.roomList.append(roomDict)
