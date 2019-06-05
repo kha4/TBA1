@@ -2,8 +2,11 @@ import roomParser
 from roomParser import parseNewRoomData
 import os
 
+##########################################################################################
+## The gameState class keep track of the differnet different variables within the game  ##
+## that are constantly changing as the game progresses.                                 ##
+##########################################################################################
 class gameState:
-    """This class maintains current state of the game"""
 
     def __init__(self):
         self.player = ""
@@ -14,10 +17,9 @@ class gameState:
         self.roomStatus = []
         self.passageList = []
 
-
-    #hit', 'pull', 'eat', 'scratch', 'break', 'push', 'drink',
+    # Modifies the state of the game base on verbs and nouns passed in by the text parser #
     def modifyState(self, verb, noun):
-        if (verb == 'take'):
+        if (verb == 'take'): # This verb adds items to player inventory
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -28,7 +30,7 @@ class gameState:
                 elif (lowCaseItem == noun and item['Movable'] == 'n'):
                     print (item['Name'], "can't be added to your inventory.")
                     return
-        elif (verb == 'open'):
+        elif (verb == 'open'): #This verb just opens object
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -98,7 +100,7 @@ class gameState:
                     else:
                         print ("You cannot open this.\n")
                         return
-        elif (verb == 'drop'):
+        elif (verb == 'drop'): # This verb removed items from a players inventory
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -110,7 +112,7 @@ class gameState:
                     else:
                         print ("This cannot be dropped.\n")
                         return
-        elif (verb == 'look'):
+        elif (verb == 'look'): # This verb displays the long description of a current room
             for item in self.roomList:
                 if (item['Name'] == self.currentRoom):
                     print ("Location: ", item['Name'])
@@ -219,20 +221,20 @@ class gameState:
                         print (item['Name'], ": ")
                         print (item['Description'], "\n")
                         return
-        elif (verb == 'help'):
+        elif (verb == 'help'): # This verb provides the player with suggested verbs to use
             print ("Try these commands: hit, pull, eat, scratch, drop, break, throw, push, drink, ")
             print ("open, take, look, lookat, savegame, loadgame, help, inventory.")
             return
-        elif (verb == 'inventory'):
+        elif (verb == 'inventory'): # This verb diplays the players current inventory
             self.displayInventory()
             return
-        elif (verb == 'throw'):
+        elif (verb == 'throw'): # This verb, similar to drop will remove an item from player inventory
             for item in self.objectList:
                 if (item['Name'] == noun and item['Location'] == 'Inventory'):
                     self.removeInventory(noun)
                     print (item['Name'], " has been removed from your inventory.")
                     return
-        elif (verb == 'go'):
+        elif (verb == 'go'): # This verb is used to move between rooms
             for item in self.passageList:
                 description = item['Description'].lower()
                 direction = item['Direction'].lower()
@@ -268,7 +270,7 @@ class gameState:
                             return
                     print ("It's locked, see if you can find something to open it.")
                     return
-        elif (verb == 'hit'):
+        elif (verb == 'hit'): # This verb allows you to hit things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -305,7 +307,7 @@ class gameState:
                     else:
                         print ("I don't think you want to hit that.")
                         return
-        elif (verb == 'pull'):
+        elif (verb == 'pull'): # This verb allows you to pull things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -345,7 +347,7 @@ class gameState:
                     else:
                         print ("I don't think you want to pull that.")
                         return
-        elif (verb == 'eat'):
+        elif (verb == 'eat'):  # This verb allows you to eat things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -356,7 +358,7 @@ class gameState:
                     else:
                         print ("I don't think you want to eat that.\n")
                         return
-        elif (verb == 'scratch'):
+        elif (verb == 'scratch'): # This verb allows you to scratch things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -382,7 +384,7 @@ class gameState:
                     else:
                         print ("I don't think you want to scratch that.")
                         return
-        elif (verb == 'break'):
+        elif (verb == 'break'): # This verb allows you to break things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -413,7 +415,7 @@ class gameState:
                     else:
                         print ("I don't think you want to break that.")
                         return
-        elif (verb == 'push'):
+        elif (verb == 'push'): # This verb allows you to push things
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
@@ -440,7 +442,7 @@ class gameState:
                         return
                     else:
                         print ("I don't think you want to push that.")
-        elif (verb == 'drink'):
+        elif (verb == 'drink'): # This verb allows you to drink things
             print ("I don't think you want to drink that.")
         elif (verb == 'savegame'):
             self.saveGame()
@@ -449,35 +451,36 @@ class gameState:
             self.loadSavedGame()
             self.printRoomDescription()
             return  
-
+    
+    # Fuction that changes the status of a room from not visited to visited
     def setRoomStatus(self, roomName):
         for item in self.roomList:
             if (item['Name'] == roomName):
                 if (item['Status'] == 'not visited'):
                     item['Status'] = 'visited'
-                    #print ("Room status changed to", item['Status'])#for testing
 
-    # Not sure this function is needed
+    # Provides the status of the room
     def getRoomStatus(self):
         for item in self.roomList:
             if (item['Name'] == self.currentRoom):
                 return (item['Status'])
 
+    # Function adds an object to the object list
     def addObject(self, objectDict):
         self.objectList.append(objectDict)
-        #print ("Object added to the list")#for testing
 
+    # Function adds a passage to the passage list
     def addPassage(self, passageDict):
         self.passageList.append(passageDict)
-        #print("Passage added to list")#for testing
 
+    # Function adds an item to a players inventory
     def addInventory(self, itemName):
         self.playerInventory.append(itemName)
         for item in self.objectList:
             if (item['Name'] == itemName):
                 item['Location'] = 'inventory'
-                #print ("Item added to inventory")#for testing
 
+    # Function removes an item from a player inventory
     def removeInventory(self, itemName):
         for item in self.playerInventory:
             if (item == itemName):
@@ -485,25 +488,22 @@ class gameState:
                 for item in self.objectList:
                     if (item['Name'] == itemName):
                         item['Location'] = self.currentRoom
-                        #print ("Item added to inventory")#for testing
 
+    # Function prints the room description
     def printRoomDescription(self):
         for item in self.roomList:
             rmName = str(item['Name'])
             if (item['Name'] == self.currentRoom):
-                if (item['Status'] == 'visited'):
+                if (item['Status'] == 'visited'): # Short if vistied
                     print ("Location: ", item['Name'])
                     print (item['ShortDesc'], '\n')
-                    print ("Inventory: ")
-                    self.displayInventory()
                 else:
-                    print ("Location: ", item['Name'])
+                    print ("Location: ", item['Name']) # Long if not visited
                     print (item['LongDesc'], '\n')
                     self.setRoomStatus(self.currentRoom)
-                    print ("Inventory: ")
-                    self.displayInventory()
                 break
 
+    # Function load a saved game from a file
     def loadSavedGame(self):
 
         self.playerInventory = []
@@ -549,6 +549,7 @@ class gameState:
             temp = self.passageList[index]
             temp['Locked'] = tempPassage[index]                   
 
+    # Function save a players current game to a file
     def saveGame(self):
         fo = open("savedgame.txt", "w+")
 
@@ -573,35 +574,39 @@ class gameState:
 
         print("Game saved!")
 
+    # Function that adds a room to the room list
     def createRoom(self, roomDict):
         self.roomList.append(roomDict)
-        #print ("Room added to the list")#for testing
 
+    # Function prints item descriptions
     def printDescription(self, objectName):
         for item in self.objectList:
             if (item['Name'] == objectNameName):
                 if (item['Location'] == self.currentRoom):
                     print ("Room status changed to", item['Status'])#for testing
 
+    # Function displayes a players inventory
     def displayInventory(self):
         print (self.playerInventory, '\n')
 
+    # Function for test
     def testSuite(self):
-        #print ("**********This is a testing function that was called**********")
-        #print ("List of all rooms loaded: \n")
-        #print (self.roomList)
-        #print ("List of all passages loaded: \n")
-        #print (self.passageList)
+        print ("**********This is a testing function that was called**********")
+        print ("List of all rooms loaded: \n")
+        print (self.roomList)
+        print ("List of all passages loaded: \n")
+        print (self.passageList)
         print ("List of all objects loaded: \n")
         print (self.objectList)
-        #print ("Current room: \n")
-        #print (self.currentRoom)
+        print ("Current room: \n")
+        print (self.currentRoom)
         print ("********************End of Test Function***********************")
-        
+    
+    # Function handles if the player wants to quit mid game
     def quitGame(self):
             save = 'z'
 
-            while (save != 'y' and save != 'n'):
+            while (save != 'y' and save != 'n'): # Given the option to save before quiting
                 save = input("Would you like to save your game? (y or n) > ")
                 if (save == 'y'):
                     self.saveGame()
@@ -611,9 +616,10 @@ class gameState:
                 else:
                     print ("Not a valid input, next time try again.\n")
 
+    # Function that decides when the game has been won
     def gameOver(self):
         winningNum = 0
-
+        # All of these thing need to be in a players inventory to when
         for item in self.playerInventory:
             if (item == 'raincoats'):
                 winningNum += 1
@@ -625,7 +631,7 @@ class gameState:
                 winningNum += 1
             if (item == 'scissors'):
                 winningNum += 1
-
+        # Player must be at the dock to win
         if (winningNum == 5 and self.currentRoom == 'Dock'):
             print("Using the inventory you collected, you contruct a floatation devise")
             print("To allow you to escape from the island. Congradulations!")
