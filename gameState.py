@@ -125,7 +125,6 @@ class gameState:
             for item in self.objectList:
                 tmpItem = item['Name']
                 lowCaseItem = tmpItem.lower()
-                print (lowCaseItem)
                 if (lowCaseItem == noun):
                     if (noun == 'drain pipes'):
                         if (item['HiddenItem'] == 'Key'):
