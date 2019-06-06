@@ -121,7 +121,7 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
     understandFlag = 0
     while(understandFlag != 1):
     #take in text
-        userInput = input("What would you like to do next?\n")
+        userInput = input("\nWhat would you like to do next?\n")
         sys.stdout.flush()
     #split text by " "(space)
         lowerInput = userInput.lower()
@@ -187,7 +187,6 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                             for i in gameNouns:
                                 try:
                                     if words[idx+1] == i:
-                                        # print ("FOUND NOUN:", i)
                                         userNoun = i
                                         #confirm understand, we have action and noun that we know so we can exit
                                         understandFlag = 1
@@ -219,58 +218,45 @@ def parse(newGame):
         if (item['Location'] == newGame.currentRoom):
             gameNouns.append(item['Name'].lower())
 
-    print ("Items in the room:", gameNouns)
+    # print ("Items in the room:", gameNouns)
 
     invNouns = []
     for item in newGame.playerInventory:
         invNouns.append(item.lower())
 
-    print ("Inventory:", invNouns)
+    # print ("Inventory:", invNouns)
 
     adjRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
             adjRooms.append(item['Description'].lower())
 
-    print ("Available exits:", adjRooms)
+    # print ("Available exits:", adjRooms)
 
     dirRooms = []
     for item in newGame.passageList:
         if (item['Location'] == newGame.currentRoom):
             dirRooms.append(item['Direction'].lower())
 
-    print ("Available directions:", dirRooms)
+    # print ("Available directions:", dirRooms)
 
     actionNoun = userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns)
     finalActions = ['hit', 'pull', 'eat', 'scratch', 'drop', 'break', 'throw', 'push', 'drink', 'open', 'take', 'look', 'lookat', 'savegame', 'loadgame', 'help', 'inventory', 'quit']
     for x in finalActions:
         if actionNoun[0] == x:
-            print ("\nVerb:", actionNoun[0])
-            print ("User Noun:", actionNoun[1])
+            # print ("\nVerb:", actionNoun[0])
+            # print ("User Noun:", actionNoun[1])
             return actionNoun[0], actionNoun[1]
     for x in adjRooms:
         if x == actionNoun[0]:
             str2 = ''.join(actionNoun[0])
-            print ("\nVerb:", "go")
-            print ("User Noun:", str2)
+            # print ("\nVerb:", "go")
+            # print ("User Noun:", str2)
             return "go", str2
     for x in dirRooms:
         if x == actionNoun[0]:
             str1 = ''.join(actionNoun[0])
-            print ("\nVerb:", "go")
-            print ("User Noun:", str1)
+            # print ("\nVerb:", "go")
+            # print ("User Noun:", str1)
             return "go", str1
 
-
-# def printRoomDescription(self):
-#     for item in self.roomList:
-#         rmName = str(item['Name'])
-#         if (item['Name'] == self.currentRoom):
-#             if (item['Status'] == 'visited'):
-#                 print ("Location: ", item['Name'])
-#                 print (item['ShortDesc'])
-#             else:
-#                 print ("Location: ", item['Name'])
-#                 print (item['LongDesc'])
-#                 self.setRoomStatus(self.currentRoom)
-#         break

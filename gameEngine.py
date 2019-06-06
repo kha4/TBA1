@@ -19,6 +19,7 @@ from os import system, name
 
 def main():
 
+    #checking that the column size is big enough
     rows, columns = os.popen('stty size', 'r').read().split()
     if int(columns) < 172:
         print ("Please increase your column size to at least 176")
