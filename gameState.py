@@ -111,6 +111,7 @@ class gameState:
                     if (item['Location'] == 'inventory'):
                         self.removeInventory(noun)
                         print (item['Name'], " has been removed from your inventory.")
+                        item['Location'] == self.currentRoom
                         return
                     else:
                         print ("This cannot be dropped.\n")
@@ -230,12 +231,23 @@ class gameState:
         elif (verb == 'inventory'): # This verb diplays the players current inventory
             self.displayInventory()
             return
-        elif (verb == 'throw'): # This verb, similar to drop will remove an item from player inventory
+        elif (verb == 'throw'): # This verb, similar to drop will remove an item from player inventory or allow you to interact with the horseshoe
             for item in self.objectList:
-                if (item['Name'] == noun and item['Location'] == 'Inventory'):
-                    self.removeInventory(noun)
-                    print (item['Name'], " has been removed from your inventory.")
-                    return
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'horseshoe' and self.currentRoom == "Recreation Yard"):
+                        print ("You play a game of ring toss in the horseshoe pit.\n")
+                        print ("You give up because you have no hand eye coordination.\n")
+                        return
+                    elif (item['Location'] == 'Inventory'):
+                        self.removeInventory(noun)
+                        print (item['Name'], " has been removed from your inventory.")
+                        item['Location'] = self.currentRoom
+                        return
+                    else:
+                        print("This cannot be thrown.\n")
+                        return
         elif (verb == 'go'): # This verb is used to move between rooms
             for item in self.passageList:
                 description = item['Description'].lower()
@@ -366,7 +378,7 @@ class gameState:
                 lowCaseItem = tmpItem.lower()
                 if (lowCaseItem == noun):
                     if (noun == 'tables' and item['Location'] == 'Mess Hall'):
-                        if (item['HiddentItem'] == 'gum'):
+                        if (item['HiddenItem'] == 'gum'):
                             item['HiddenItem'] = 'none'
                             print ("You scratch at the tables.\n")
                             print (item['Description'], "\n")
@@ -445,7 +457,14 @@ class gameState:
                     else:
                         print ("I don't think you want to push that.")
         elif (verb == 'drink'): # This verb allows you to drink things
-            print ("I don't think you want to drink that.")
+            for item in self.objectList:
+                tmpItem = item['Name']
+                lowCaseItem = tmpItem.lower()
+                if (lowCaseItem == noun):
+                    if (noun == 'water faucet'):
+                        print ("You drink some water. It quenched your thirst!\n")
+                    else:
+                        print ("I don't think you want to drink that.")
         elif (verb == 'savegame'):
             self.saveGame()
             return
@@ -635,7 +654,7 @@ class gameState:
                 winningNum += 1
         # Player must be at the dock to win
         if (winningNum == 5 and self.currentRoom == 'Dock'):
-            print("Using the inventory you collected, you contruct a floatation devise")
-            print("To allow you to escape from the island. Congradulations!")
+            print("Using the inventory you collected, you contruct a floatation device")
+            print("To allow you to escape from the island. Congratulations!")
             return 1
         return 0

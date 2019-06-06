@@ -20,8 +20,8 @@ def display():
     #system('cls') #for windows
     system('clear') #for linux
 
-    line1 = "After escaping from two previous prison, you are now being transported to Alcatraz Federal Penitentiary.\n"
-    line2 = "No one in history has every excaped from Alcatraz island. Unless you can figure out how to the first, then\n"
+    line1 = "After escaping from two previous prisons, you are now being transported to Alcatraz Federal Penitentiary.\n"
+    line2 = "No one in history has ever escaped from Alcatraz island. Unless you can figure out how to do it first, then\n"
     line3 = "this will be last place you ever see."
 
     #For statement create the typing effect for the game intro

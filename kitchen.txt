@@ -1,4 +1,4 @@
 Kitchen
-You've arrived at the Kitchen! The whole place is a mess, littered with trash and rotten food. It's no wonder all the food that comes from this kitchen is unappetizing. The only way out is back east to the Mess Hall. Distinguishable features are the sink and the pantry.
-You're back in the Kitchen. Passageways: East - Mess Hall. Features: Sink, Pantry.
+You've arrived at the Kitchen! The whole place is a mess, littered with trash and rotten food. It's no wonder all the food that comes from this kitchen is unappetizing. The only way out is back east to the Mess Hall. Distinguishable features are the sink, water faucet, and the pantry.
+You're back in the Kitchen. Passageways: East - Mess Hall. Features: Sink, Water Faucet, Pantry.
 not visited
