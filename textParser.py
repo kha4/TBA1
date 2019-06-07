@@ -187,7 +187,7 @@ def userInput(newGame, gameNouns, adjRooms, dirRooms, invNouns):
                             alias = findAlias(x)
                             understandFlag = 2 
                             #if user enters drop we know it's in their inventory, check inventory
-                            if alias == "drop":
+                            if alias == "drop" or alias == "throw":
                                 understandFlag = 4
                                 #if verb is found in the inventory, return it with the noun
                                 for p in invNouns:

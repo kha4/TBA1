@@ -66,7 +66,7 @@ class gameState:
                         if (item['HiddenItem'] == 'locked'):
                             for keyItem in self.playerInventory:
                                 if (keyItem == 'warden key'):
-                                    item['HiddenItem'] == 'none'
+                                    item['HiddenItem'] = 'none'
                                     print ("You open and inspect the door lock control panel.\n")
                                     print (item['Description'], "\n")
                                     print ("The door to the Armory has been unlocked.\n")
@@ -138,9 +138,20 @@ class gameState:
                             print (item['Name'], ": ")
                             print (item['ShortDesc'], "\n")
                             return
+                    elif (noun == 'horseshoe pit'):
+                        if (item['HiddenItem'] == 'horseshoe'):
+                            item['HiddenItem'] = 'none'
+                            print (item['Description'], "\n")
+                            print ("The horseshoe has been added to your inventory.")
+                            self.addInventory("horseshoe")
+                            return
+                        else:
+                            print (item['Name'], ": ")
+                            print (item['ShortDesc'], "\n")
+                            return
                     elif (noun == 'warden'):
                         if (item['HiddenItem'] == 'warden key'):
-                            item['HiddenItem'] == 'none'
+                            item['HiddenItem'] = 'none'
                             print (item['Description'], "\n")
                             print ("The warden key has been added to your inventory.")
                             self.addInventory("warden key")
@@ -170,7 +181,7 @@ class gameState:
                         return
                     elif (noun == 'locking mechanism'):
                         if (item['HiddenItem'] == 'locked'):
-                            item['HiddenItem'] == 'none'
+                            item['HiddenItem'] = 'none'
                             print (item['Description'], "\n")
                             print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
                             for door in self.passageList:
@@ -240,7 +251,7 @@ class gameState:
                         print ("You play a game of ring toss in the horseshoe pit.\n")
                         print ("You give up because you have no hand eye coordination.\n")
                         return
-                    elif (item['Location'] == 'Inventory'):
+                    elif (item['Location'] == 'inventory'):
                         self.removeInventory(noun)
                         print (item['Name'], " has been removed from your inventory.")
                         item['Location'] = self.currentRoom
@@ -436,7 +447,7 @@ class gameState:
                 if (lowCaseItem == noun):
                     if (noun == 'locking mechanism'):
                         if (item['HiddenItem'] == 'locked'):
-                            item['HiddenItem'] == 'none'
+                            item['HiddenItem'] = 'none'
                             print (item['Description'], "\n")
                             print ("The doors to the Mess Hall, Library, and Sally Port have been unlocked.\n")
                             for door in self.passageList:
